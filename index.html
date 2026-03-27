@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>British Values Pack — Smart School Councils</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #3db54a;
+    --green-dark: #2e9e3a;
+    --navy: #1a2e44;
+    --navy-light: #2d4a6b;
+    --grey-bg: #f0f4f8;
+    --grey-mid: #6b7a8d;
+    --grey-light: #e2e8f0;
+    --white: #ffffff;
+    --red: #e53e3e;
+    --blue: #3b82f6;
+    --amber: #f59e0b;
+    --purple: #8b5cf6;
+    --teal: #0d9488;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--grey-bg);
+    color: var(--navy);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--grey-light);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo-badge {
+    background: var(--green);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+  }
+  .nav-logo-text {
+    font-size: 13px;
+    color: var(--grey-mid);
+    font-weight: 500;
+  }
+  .nav-cta {
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--green-dark); }
+
+  /* SECTIONS */
+  section { padding: 64px 24px; }
+  .container { max-width: 680px; margin: 0 auto; }
+  .container-wide { max-width: 900px; margin: 0 auto; }
+
+  /* HERO */
+  .hero {
+    background: var(--white);
+    padding: 72px 24px 64px;
+    text-align: center;
+    border-bottom: 1px solid var(--grey-light);
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: #e8f5ea;
+    color: var(--green-dark);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--grey-mid);
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+  .hero-price {
+    font-size: 15px;
+    color: var(--grey-mid);
+    margin-top: 12px;
+  }
+  .hero-price strong { color: var(--navy); font-weight: 700; }
+  .hero-charity {
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--grey-mid);
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+  /* PROBLEM */
+  .problem { background: var(--navy); color: white; padding: 56px 24px; text-align: center; }
+  .problem h2 { font-size: 26px; font-weight: 700; margin-bottom: 16px; }
+  .problem p { font-size: 17px; color: #a0b4c8; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+  /* WHAT YOU GET */
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--green-dark);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--grey-mid);
+    margin-bottom: 36px;
+    max-width: 520px;
+  }
+
+  /* VALUES GRID */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .value-card {
+    background: var(--white);
+    border: 1px solid var(--grey-light);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .value-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .value-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .value-card p { font-size: 13px; color: var(--grey-mid); }
+
+  /* DEBATE PICKER */
+  .picker-section { background: var(--white); border-top: 1px solid var(--grey-light); border-bottom: 1px solid var(--grey-light); }
+  .picker-intro { text-align: center; margin-bottom: 36px; }
+  .filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    justify-content: center;
+  }
+  .filter-tab {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--grey-light);
+    background: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--grey-mid);
+    transition: all 0.15s;
+  }
+  .filter-tab.active, .filter-tab:hover {
+    border-color: var(--green);
+    background: #e8f5ea;
+    color: var(--green-dark);
+  }
+  .debates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .debate-card {
+    background: var(--grey-bg);
+    border: 2px solid var(--grey-light);
+    border-radius: 12px;
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .debate-card:hover { border-color: var(--green); background: #f0faf1; }
+  .debate-card.selected { border-color: var(--green); background: #e8f5ea; box-shadow: 0 0 0 3px #b7e4bc; }
+  .debate-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+  .debate-ks { font-size: 11px; font-weight: 600; color: var(--grey-mid); }
+  .debate-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); line-height: 1.35; }
+  .debate-card p { font-size: 13px; color: var(--grey-mid); }
+  .debate-select-btn {
+    margin-top: auto;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: none;
+    background: var(--green);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.15s;
+  }
+  .debate-select-btn:hover { background: var(--green-dark); }
+  .debate-card.selected .debate-select-btn { background: var(--green-dark); }
+
+  /* SELECTED CALLOUT */
+  #selected-callout {
+    display: none;
+    margin-top: 28px;
+    background: #e8f5ea;
+    border: 2px solid var(--green);
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: center;
+  }
+  #selected-callout.visible { display: block; }
+  #selected-callout h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  #selected-callout p { font-size: 14px; color: var(--grey-mid); margin-bottom: 16px; }
+
+  /* HOW IT WORKS */
+  .steps { display: flex; flex-direction: column; gap: 0; position: relative; }
+  .step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--grey-light);
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--green);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .step p { font-size: 14px; color: var(--grey-mid); line-height: 1.6; }
+
+  /* REPORT PREVIEW */
+  .report-preview {
+    background: var(--white);
+    border: 1px solid var(--grey-light);
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .report-preview::before {
+    content: 'EXAMPLE REPORT';
+    position: absolute;
+    top: 12px;
+    right: -24px;
+    background: var(--amber);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 4px 36px;
+    transform: rotate(45deg);
+  }
+  .report-school { font-size: 13px; color: var(--grey-mid); margin-bottom: 4px; }
+  .report-title { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 20px; }
+  .report-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .report-stat {
+    background: var(--grey-bg);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .report-stat-val { font-size: 24px; font-weight: 800; color: var(--navy); }
+  .report-stat-label { font-size: 11px; color: var(--grey-mid); font-weight: 600; margin-top: 2px; }
+  .report-highlight {
+    background: #e8f5ea;
+    border-left: 4px solid var(--green);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    font-size: 14px;
+    color: var(--navy);
+    margin-top: 12px;
+  }
+
+  /* PRICING */
+  .pricing-card {
+    background: var(--white);
+    border: 2px solid var(--green);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+    max-width: 440px;
+    margin: 0 auto;
+    box-shadow: 0 8px 32px rgba(61,181,74,0.12);
+  }
+  .pricing-card h2 { font-size: 22px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+  .price-display { font-size: 52px; font-weight: 800; color: var(--green); line-height: 1; margin: 16px 0 4px; }
+  .price-note { font-size: 14px; color: var(--grey-mid); margin-bottom: 24px; }
+  .pricing-features { list-style: none; text-align: left; margin-bottom: 28px; }
+  .pricing-features li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--grey-light);
+    font-size: 15px;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pricing-features li:last-child { border-bottom: none; }
+  .pricing-features li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 16px; flex-shrink: 0; }
+  .upgrade-note {
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--grey-mid);
+    background: var(--grey-bg);
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  /* ABOUT */
+  .about-section { background: var(--navy); color: white; }
+  .about-section .section-label { color: #7ec87f; }
+  .about-section .section-title { color: white; }
+  .about-section p { font-size: 16px; color: #a0b4c8; line-height: 1.8; margin-bottom: 16px; }
+  .charity-number { font-size: 13px; color: #7ec87f; font-weight: 600; }
+
+  /* FAQ */
+  .faq { display: flex; flex-direction: column; gap: 0; }
+  .faq-item {
+    border-bottom: 1px solid var(--grey-light);
+    padding: 20px 0;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--grey-light); }
+  .faq-q {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    user-select: none;
+  }
+  .faq-q::after { content: '+'; font-size: 20px; color: var(--green); flex-shrink: 0; }
+  .faq-item.open .faq-q::after { content: '−'; }
+  .faq-a {
+    display: none;
+    font-size: 14px;
+    color: var(--grey-mid);
+    margin-top: 10px;
+    line-height: 1.7;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: #a0b4c8;
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 13px;
+    border-top: 1px solid #2d4a6b;
+  }
+  footer a { color: #7ec87f; text-decoration: none; }
+
+  /* FINAL CTA */
+  .final-cta { background: var(--green); text-align: center; padding: 64px 24px; }
+  .final-cta h2 { font-size: 28px; font-weight: 800; color: white; margin-bottom: 10px; }
+  .final-cta p { font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 28px; }
+  .btn-white {
+    display: inline-block;
+    background: white;
+    color: var(--green-dark);
+    padding: 16px 36px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-white:hover { opacity: 0.92; }
+
+  @media (max-width: 600px) {
+    .values-grid { grid-template-columns: 1fr; }
+    .debates-grid { grid-template-columns: 1fr; }
+    section { padding: 48px 20px; }
+    .pricing-card { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <span class="nav-logo-badge">British Values</span>
+    <span class="nav-logo-text">by Smart School Councils</span>
+  </a>
+  <a class="nav-cta" href="#get-pack">Get the Pack — £49</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">For KS1 &amp; KS2 primary schools in England</div>
+    <h1>Your British Values programme. Done properly.</h1>
+    <p class="hero-sub">Ten structured class debates. A full impact report for Ofsted. Built by Smart School Councils, a registered charity.</p>
+    <a class="btn-primary" href="#try-debate">Try a free debate first →</a>
+    <p class="hero-price">Full pack: <strong>£49 for a full term's access</strong></p>
+    <p class="hero-charity">Smart School Councils · Registered Charity No. 1156110</p>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="problem">
+  <div class="container">
+    <h2>British Values isn't optional.</h2>
+    <p>Every primary school in England must cover it — and evidence it for Ofsted. Finding quality resources, running structured discussions, and pulling together something coherent for governors takes time most teachers don't have.</p>
+  </div>
+</div>
+
+<!-- WHAT IS IT -->
+<section>
+  <div class="container">
+    <div class="section-label">What you get</div>
+    <h2 class="section-title">A complete British Values programme in a box</h2>
+    <p class="section-sub">Two structured class debates for each of the five British Values — designed for both Key Stage 1 and Key Stage 2. Every debate includes a question, video, and debate pack for teachers.</p>
+
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🗳️</div>
+        <div>
+          <h3>Democracy</h3>
+          <p>2 debates · KS1 &amp; KS2</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⚖️</div>
+        <div>
+          <h3>Rule of Law</h3>
+          <p>2 debates · KS1 &amp; KS2</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🙋</div>
+        <div>
+          <h3>Individual Liberty</h3>
+          <p>2 debates · KS1 &amp; KS2</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <div>
+          <h3>Mutual Respect</h3>
+          <p>2 debates · KS1 &amp; KS2</p>
+        </div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🕌</div>
+        <div>
+          <h3>Tolerance of Different Faiths</h3>
+          <p>2 debates · KS1 &amp; KS2</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRY A DEBATE -->
+<section class="picker-section" id="try-debate">
+  <div class="container-wide">
+    <div class="picker-intro">
+      <div class="section-label">Try before you buy</div>
+      <h2 class="section-title">Pick a question. Run it with your class — free.</h2>
+      <p class="section-sub">Choose any debate below to try with your class at no cost. If you like it, the full pack gives you all ten.</p>
+    </div>
+
+    <div class="filter-tabs" id="filter-tabs">
+      <button class="filter-tab active" data-filter="all">All debates</button>
+      <button class="filter-tab" data-filter="democracy">🗳️ Democracy</button>
+      <button class="filter-tab" data-filter="rule-of-law">⚖️ Rule of Law</button>
+      <button class="filter-tab" data-filter="individual-liberty">🙋 Individual Liberty</button>
+      <button class="filter-tab" data-filter="mutual-respect">🤝 Mutual Respect</button>
+      <button class="filter-tab" data-filter="tolerance">🕌 Tolerance</button>
+    </div>
+
+    <div class="debates-grid" id="debates-grid"></div>
+
+    <div id="selected-callout">
+      <h3 id="callout-title">Great choice.</h3>
+      <p id="callout-sub">Your free debate is ready. Get the full pack to unlock all ten debates and your end-of-term impact report.</p>
+      <a class="btn-primary" href="#get-pack">Get the full pack — £49 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title">From sign-up to Ofsted evidence in one term</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Pick your first question</h3>
+          <p>Browse the debates above and choose one that fits your class. You'll set this as your first live meeting.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Pay and get set up instantly</h3>
+          <p>£49 for a full term's access. Your account is created automatically — your first debate is live in minutes. No setup calls, no faff.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Run your ten debates across the term</h3>
+          <p>Two debates per British Value. Each includes a video, structured debate pack, and pupil voting. Works for KS1 and KS2.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <h3>Receive your impact report</h3>
+          <p>At the end of term we generate a personalised PDF — which values you covered, most engaged class, most contested debate. Ready to share with governors or inspectors.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT REPORT PREVIEW -->
+<section style="background: var(--white); border-top: 1px solid var(--grey-light);">
+  <div class="container">
+    <div class="section-label">The impact report</div>
+    <h2 class="section-title">Ofsted-ready evidence, generated for you</h2>
+    <p class="section-sub">At the end of term, we produce a personalised PDF report for your school. Here's what it looks like.</p>
+
+    <div class="report-preview">
+      <div class="report-school">Greenfield Primary School · Spring Term 2026</div>
+      <div class="report-title">British Values Impact Report</div>
+      <div class="report-stats">
+        <div class="report-stat">
+          <div class="report-stat-val">10</div>
+          <div class="report-stat-label">Debates run</div>
+        </div>
+        <div class="report-stat">
+          <div class="report-stat-val">6</div>
+          <div class="report-stat-label">Classes participated</div>
+        </div>
+        <div class="report-stat">
+          <div class="report-stat-val">142</div>
+          <div class="report-stat-label">Pupil voices heard</div>
+        </div>
+        <div class="report-stat">
+          <div class="report-stat-val">5/5</div>
+          <div class="report-stat-label">Values covered</div>
+        </div>
+      </div>
+      <div class="report-highlight">🏆 Most engaged class: <strong>Year 4 Elm</strong> — participated in all 10 debates</div>
+      <div class="report-highlight" style="margin-top:8px; background: #eff6ff; border-color: var(--blue);">🔥 Most contested debate: <strong>"Should everyone have to follow the same rules?"</strong> — 51% yes, 49% no</div>
+      <div class="report-highlight" style="margin-top:8px; background: #faf5ff; border-color: var(--purple);">💬 Most discussed value: <strong>Democracy</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="get-pack">
+  <div class="container">
+    <div style="text-align:center; margin-bottom: 36px;">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, one-off pricing</h2>
+    </div>
+    <div class="pricing-card">
+      <h2>British Values Pack</h2>
+      <div class="price-display">£49</div>
+      <p class="price-note">One full term's access · No auto-renewal</p>
+      <ul class="pricing-features">
+        <li>10 structured class debates (KS1 &amp; KS2)</li>
+        <li>Teacher debate packs for every session</li>
+        <li>Pupil voting tool — every voice counts</li>
+        <li>End-of-term impact report PDF</li>
+        <li>Ofsted-ready evidence built in</li>
+        <li>Account set up automatically on purchase</li>
+      </ul>
+      <a class="btn-primary" href="#" style="width:100%; text-align:center; display:block;">Get the British Values Pack →</a>
+      <p class="upgrade-note">Love it? Upgrade to full Smart School Councils membership at the end of term — your £49 comes off the price.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SSC -->
+<section class="about-section">
+  <div class="container">
+    <div class="section-label">About us</div>
+    <h2 class="section-title">Built by Smart School Councils</h2>
+    <p>The British Values Pack is built and run by Smart School Councils, a registered charity that helps primary, secondary, and SEN schools run effective school councils and structured pupil debate.</p>
+    <p>We've supported hundreds of schools across the UK. We don't have shareholders. We exist to make pupil voice work better in schools — and to make your job easier.</p>
+    <p class="charity-number">Registered Charity No. 1156110 · <a href="https://smartschoolcouncils.org.uk" style="color:#7ec87f;">smartschoolcouncils.org.uk</a></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <div class="section-label">Questions</div>
+    <h2 class="section-title" style="margin-bottom: 28px;">Frequently asked</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q">Do I need a Smart School Councils membership?</div>
+        <div class="faq-a">No. The British Values Pack is a standalone product. If you love it and want to extend to a full school council programme, you can upgrade to full membership at the end of term — and your £49 comes off the price.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this suitable for both KS1 and KS2?</div>
+        <div class="faq-a">Yes — every debate is designed with both Key Stage 1 and Key Stage 2 in mind. The questions and debate packs are age-appropriate and teacher-tested for primary schools.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What does "full term's access" mean?</div>
+        <div class="faq-a">From the day you sign up, you have one full school term to run your debates. There are no auto-renewals or surprise charges — the £49 is a one-off payment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How quickly will my account be set up?</div>
+        <div class="faq-a">Instantly. Once you pay, your account is created automatically and your first debate is ready to run in minutes. No setup calls required.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I see an example impact report?</div>
+        <div class="faq-a">Yes — scroll up to see a preview of what the report contains. The full PDF is personalised with your school's name, debates run, and pupil data.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Who runs this?</div>
+        <div class="faq-a">Smart School Councils, a UK registered charity (no. 1156110). We've been supporting school councils since 2013.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="container">
+    <h2>Ten debates. One term. One report.</h2>
+    <p>Tick British Values off your list — compliantly, with evidence.</p>
+    <a class="btn-white" href="#get-pack">Get the British Values Pack — £49 →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Smart School Councils · Registered Charity No. 1156110</p>
+  <p style="margin-top:6px;"><a href="https://smartschoolcouncils.org.uk">smartschoolcouncils.org.uk</a> · britishvalues.org is operated by Smart School Councils</p>
+</footer>
+
+<script>
+  const debates = [
+    { id: 1, value: 'democracy', icon: '🗳️', colour: '#3b82f6', ks: 'KS1', title: 'Should every child in school get a vote on the class rules?', desc: 'Pupils explore fairness, representation, and why everyone\'s voice matters.' },
+    { id: 2, value: 'democracy', icon: '🗳️', colour: '#3b82f6', ks: 'KS2', title: 'Should the results of a vote always be followed, even if you disagree?', desc: 'A deeper look at majority decisions, minority views, and accepting outcomes.' },
+    { id: 3, value: 'rule-of-law', icon: '⚖️', colour: '#8b5cf6', ks: 'KS1', title: 'Should there be a rule against running in the playground?', desc: 'Introducing the idea that rules exist to protect everyone, even if they feel unfair.' },
+    { id: 4, value: 'rule-of-law', icon: '⚖️', colour: '#8b5cf6', ks: 'KS2', title: 'Should everyone have to follow the same rules, no matter who they are?', desc: 'Explores equality before the law and whether rules should ever be different for different people.' },
+    { id: 5, value: 'individual-liberty', icon: '🙋', colour: '#f59e0b', ks: 'KS1', title: 'Should you be allowed to wear whatever you want to school?', desc: 'Pupils think about personal choice, community, and where freedom has limits.' },
+    { id: 6, value: 'individual-liberty', icon: '🙋', colour: '#f59e0b', ks: 'KS2', title: 'Should people be free to say anything they like online?', desc: 'Connects freedom of expression with responsibility and impact on others.' },
+    { id: 7, value: 'mutual-respect', icon: '🤝', colour: '#0d9488', ks: 'KS1', title: 'Should you have to be friends with everyone in your class?', desc: 'Introduces the difference between liking someone and treating them with respect.' },
+    { id: 8, value: 'mutual-respect', icon: '🤝', colour: '#0d9488', ks: 'KS2', title: 'Is it ever okay to disagree with someone else\'s opinion?', desc: 'Explores respectful disagreement, listening skills, and valuing different perspectives.' },
+    { id: 9, value: 'tolerance', icon: '🕌', colour: '#e53e3e', ks: 'KS1', title: 'Should every celebration from every culture be celebrated in school?', desc: 'Pupils explore what tolerance looks and feels like in everyday school life.' },
+    { id: 10, value: 'tolerance', icon: '🕌', colour: '#e53e3e', ks: 'KS2', title: 'Should schools teach children about all religions, even ones they don\'t follow?', desc: 'A discussion about understanding, curiosity, and why learning about difference matters.' },
+  ];
+
+  let activeFilter = 'all';
+  let selectedId = null;
+
+  function renderDebates() {
+    const grid = document.getElementById('debates-grid');
+    const filtered = activeFilter === 'all' ? debates : debates.filter(d => d.value === activeFilter);
+    grid.innerHTML = filtered.map(d => `
+      <div class="debate-card ${selectedId === d.id ? 'selected' : ''}" id="card-${d.id}">
+        <div style="display:flex; align-items:center; gap:8px; justify-content:space-between;">
+          <span class="debate-tag" style="background:${d.colour}18; color:${d.colour};">${d.icon} ${d.value.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</span>
+          <span class="debate-ks">${d.ks}</span>
+        </div>
+        <h3>${d.title}</h3>
+        <p>${d.desc}</p>
+        <button class="debate-select-btn" onclick="selectDebate(${d.id})">${selectedId === d.id ? '✓ Selected' : 'Try this debate free'}</button>
+      </div>
+    `).join('');
+  }
+
+  function selectDebate(id) {
+    selectedId = id;
+    const debate = debates.find(d => d.id === id);
+    renderDebates();
+    const callout = document.getElementById('selected-callout');
+    document.getElementById('callout-title').textContent = `"${debate.title}"`;
+    document.getElementById('callout-sub').textContent = `Your free ${debate.ks} debate is ready. Get the full pack to unlock all ten debates and your end-of-term impact report.`;
+    callout.classList.add('visible');
+    callout.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.getElementById('filter-tabs').addEventListener('click', e => {
+    if (e.target.classList.contains('filter-tab')) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      activeFilter = e.target.dataset.filter;
+      renderDebates();
+    }
+  });
+
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open');
+    });
+  });
+
+  renderDebates();
+</script>
+</body>
+</html>
