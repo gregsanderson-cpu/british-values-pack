@@ -425,36 +425,36 @@ const BV_VALUES = [
   {
     id: 'democracy', emoji: '🗳️', label: 'Democracy',
     questions: [
-      { q: 'Should pupils have more say in how their school is run?',    options: ['Yes, give pupils a say', 'No, leave it to teachers'] },
-      { q: 'Is it fair that some people\'s votes count more than others?', options: ['Yes, some voices matter more', 'No, every vote should be equal'] }
+      { q: 'Should pupils have more say in how their school is run?',      options: ['Yes, give pupils a say', 'No, leave it to teachers'],          suggestionId: 3222 },
+      { q: 'Is it fair that some people\'s votes count more than others?', options: ['Yes, some voices matter more', 'No, every vote should be equal'], suggestionId: 3222 }
     ]
   },
   {
     id: 'rule-of-law', emoji: '⚖️', label: 'Rule of Law',
     questions: [
-      { q: 'Should there be laws that protect people even if most people disagree?', options: ['Yes, rights need protecting', 'No, the majority should decide'] },
-      { q: 'Is it ever right to break the law?',                                    options: ['Yes, if it\'s unjust', 'No, change it through proper channels'] }
+      { q: 'Should there be laws that protect people even if most people disagree?', options: ['Yes, rights need protecting', 'No, the majority should decide'],      suggestionId: 3222 },
+      { q: 'Is it ever right to break the law?',                                    options: ['Yes, if it\'s unjust', 'No, change it through proper channels'], suggestionId: 3222 }
     ]
   },
   {
     id: 'individual-liberty', emoji: '🕊️', label: 'Individual Liberty',
     questions: [
-      { q: 'Should people be free to say anything they want, even if it upsets others?', options: ['Yes, free speech is fundamental', 'No, words can cause real harm'] },
-      { q: 'Does freedom mean doing what you want, or doing what is right?',              options: ['Doing what you want', 'Doing what is right'] }
+      { q: 'Should people be free to say anything they want, even if it upsets others?', options: ['Yes, free speech is fundamental', 'No, words can cause real harm'], suggestionId: 3222 },
+      { q: 'Does freedom mean doing what you want, or doing what is right?',              options: ['Doing what you want', 'Doing what is right'],                      suggestionId: 3222 }
     ]
   },
   {
     id: 'mutual-respect', emoji: '🤝', label: 'Mutual Respect',
     questions: [
-      { q: 'Is respect something that should be earned, or given to everyone automatically?', options: ['It must be earned', 'Everyone deserves it automatically'] },
-      { q: 'Can you respect someone if you strongly disagree with their beliefs?',            options: ['Yes, always', 'No, some views don\'t deserve respect'] }
+      { q: 'Is respect something that should be earned, or given to everyone automatically?', options: ['It must be earned', 'Everyone deserves it automatically'],      suggestionId: 3222 },
+      { q: 'Can you respect someone if you strongly disagree with their beliefs?',            options: ['Yes, always', 'No, some views don\'t deserve respect'], suggestionId: 3222 }
     ]
   },
   {
     id: 'tolerance', emoji: '🌍', label: 'Tolerance',
     questions: [
-      { q: 'Is tolerating something the same as accepting it?',                          options: ['Yes, they\'re the same', 'No, you can tolerate without accepting'] },
-      { q: 'Should schools teach pupils about all religions, or leave that to families?', options: ['Schools should teach it', 'Leave it to families'] }
+      { q: 'Is tolerating something the same as accepting it?',                          options: ['Yes, they\'re the same', 'No, you can tolerate without accepting'], suggestionId: 3222 },
+      { q: 'Should schools teach pupils about all religions, or leave that to families?', options: ['Schools should teach it', 'Leave it to families'],                 suggestionId: 3222 }
     ]
   }
 ];
@@ -465,7 +465,7 @@ let state = {
   firstName: '', lastName: '', email: '',
   schoolName: '', urn: '', schoolType: '',
   classes: [],
-  question: '', options: []
+  question: '', options: [], suggestionId: null
 };
 let openValue  = null;
 let acTimer    = null;
@@ -676,8 +676,9 @@ function toggleValue(id) {
 function selectQuestion(valueId, qi) {
   const v = BV_VALUES.find(x => x.id === valueId);
   if (!v) return;
-  state.question = v.questions[qi].q;
-  state.options  = v.questions[qi].options;
+  state.question    = v.questions[qi].q;
+  state.options     = v.questions[qi].options;
+  state.suggestionId = v.questions[qi].suggestionId;
   renderValueList();
   chkScreen4();
 }
@@ -721,9 +722,10 @@ async function submit() {
       schoolName: state.schoolName,
       schoolType: state.schoolType || 'primary',
       classes:    state.classes,
-      question:   state.question,
-      options:    state.options,
-      subsidised: false,
+      question:    state.question,
+      options:     state.options,
+      suggestionId: state.suggestionId,
+      subsidised:  false,
       source:     'bv-pack'
     };
 
