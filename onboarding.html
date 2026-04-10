@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get started — British Values Pack</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇬🇧</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:      #2e7d32;
+      --green-light:#4caf50;
+      --green-pale: #e8f5e9;
+      --green-dark: #1b5e20;
+      --text:       #1a1a1a;
+      --muted:      #555;
+      --border:     #e0e0e0;
+      --bg:         #f0f4f0;
+      --red:        #c62828;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 48px 44px 40px;
+      max-width: 480px;
+      width: 100%;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    }
+
+    /* ── PROGRESS DOTS ── */
+    .dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background 0.3s, width 0.3s;
+    }
+    .dot.active {
+      background: var(--green);
+      width: 24px;
+      border-radius: 4px;
+    }
+    .dot.done { background: var(--green-light); }
+
+    /* ── SCREENS ── */
+    .screen { display: none; animation: fadeUp 0.25s ease; }
+    .screen.active { display: block; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .screen h1 {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .screen p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    /* ── INPUTS ── */
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+      margin-bottom: 16px;
+    }
+    input:focus { border-color: var(--green); }
+    input::placeholder { color: #bbb; font-weight: 400; }
+
+    /* ── AUTOCOMPLETE ── */
+    .ac-wrap { position: relative; }
+    .ac-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% - 12px);
+      left: 0; right: 0;
+      background: #fff;
+      border: 2px solid var(--green);
+      border-radius: 14px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      z-index: 100;
+      max-height: 220px;
+      overflow-y: auto;
+    }
+    .ac-dropdown.open { display: block; }
+    .ac-item {
+      padding: 11px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f0ea;
+      transition: background 0.1s;
+    }
+    .ac-item:last-child { border-bottom: none; }
+    .ac-item:hover { background: var(--green-pale); }
+    .ac-name { display: block; font-weight: 700; font-size: 14px; color: var(--text); }
+    .ac-meta { font-size: 12px; color: #999; }
+    .ac-spinner { padding: 12px 16px; font-size: 13px; color: #aaa; }
+    .not-listed {
+      font-size: 13px; color: var(--green); font-weight: 700;
+      cursor: pointer; margin-top: -8px; margin-bottom: 16px;
+      display: none;
+    }
+    .not-listed.visible { display: block; }
+
+    /* ── CLASSES ── */
+    .class-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    .class-tag {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--green-pale);
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green-dark);
+      animation: fadeUp 0.2s ease;
+    }
+    .class-tag button {
+      background: none; border: none; cursor: pointer;
+      color: var(--green); font-size: 16px; line-height: 1;
+      padding: 0 0 0 8px;
+    }
+    .add-class-row {
+      display: flex;
+      gap: 8px;
+    }
+    .add-class-row input {
+      flex: 1;
+      margin-bottom: 0;
+    }
+    .btn-add {
+      background: var(--green-pale);
+      color: var(--green-dark);
+      border: 2px solid var(--green-pale);
+      border-radius: 12px;
+      padding: 0 18px;
+      font-family: inherit;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .btn-add:hover { background: #c8e6c9; }
+    .class-hint { font-size: 12px; color: #aaa; margin-top: 8px; margin-bottom: 20px; }
+
+    /* ── DEBATE PICKER ── */
+    .value-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .value-card {
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .value-card.open { border-color: var(--green); }
+    .value-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .value-header:hover { background: var(--green-pale); }
+    .value-emoji { font-size: 20px; flex-shrink: 0; }
+    .value-name { font-weight: 800; font-size: 14px; color: var(--text); flex: 1; }
+    .value-chevron {
+      font-size: 12px; color: #aaa;
+      transition: transform 0.2s;
+    }
+    .value-card.open .value-chevron { transform: rotate(180deg); }
+    .value-questions {
+      display: none;
+      padding: 0 12px 12px;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .value-card.open .value-questions { display: flex; }
+    .q-btn {
+      width: 100%;
+      text-align: left;
+      background: #fafaf7;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      line-height: 1.4;
+    }
+    .q-btn:hover { background: var(--green-pale); border-color: var(--green-light); }
+    .q-btn.selected {
+      background: var(--green-pale);
+      border-color: var(--green);
+      color: var(--green-dark);
+    }
+    .q-btn.selected::before { content: '✓ '; }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      width: 100%;
+      padding: 16px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background 0.2s, opacity 0.2s;
+      margin-top: 4px;
+    }
+    .btn-primary:hover:not(:disabled) { background: var(--green-dark); }
+    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-back {
+      background: none; border: none;
+      font-family: inherit; font-size: 13px;
+      color: #aaa; cursor: pointer;
+      margin-top: 16px; width: 100%; text-align: center;
+      padding: 4px;
+    }
+    .btn-back:hover { color: var(--green); }
+
+    /* ── DONE SCREEN ── */
+    .done-icon { font-size: 56px; text-align: center; margin-bottom: 16px; }
+    .done-meeting-box {
+      background: var(--green-pale);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 16px 0 24px;
+      font-size: 13px;
+      color: var(--green-dark);
+      font-weight: 600;
+      word-break: break-all;
+      line-height: 1.6;
+    }
+    .done-meeting-box a { color: var(--green-dark); font-weight: 800; }
+
+    /* ── ERROR ── */
+    .error-msg {
+      background: #ffebee; color: var(--red);
+      border-radius: 10px; padding: 12px 14px;
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 16px; display: none;
+    }
+    .error-msg.visible { display: block; }
+
+    /* ── LOADING ── */
+    .loading-state {
+      text-align: center;
+      padding: 32px 0;
+      display: none;
+    }
+    .loading-state.visible { display: block; }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid var(--green-pale);
+      border-top-color: var(--green);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-state p { font-size: 14px; color: var(--muted); font-weight: 600; }
+    .loading-state .loading-step {
+      font-size: 12px; color: #aaa; margin-top: 8px;
+    }
+
+    @media (max-width: 520px) {
+      .card { padding: 32px 24px 28px; }
+      body { padding: 16px; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <!-- Progress dots -->
+  <div class="dots" id="dots"></div>
+
+  <!-- Screen 1: Welcome -->
+  <div class="screen active" id="screen-1">
+    <h1 id="welcome-heading">Welcome! Let's get you set up.</h1>
+    <p>This takes about 2 minutes. We'll set up your school and get your first British Values debate ready.</p>
+    <label for="first-name">Your first name</label>
+    <input type="text" id="first-name" placeholder="e.g. Sarah" oninput="chkScreen1()">
+    <label for="last-name">Your last name</label>
+    <input type="text" id="last-name" placeholder="e.g. Jones" oninput="chkScreen1()">
+    <label for="email-field">Your school email</label>
+    <input type="email" id="email-field" placeholder="e.g. s.jones@greenfield.sch.uk" oninput="chkScreen1()">
+    <div class="error-msg" id="err-1"></div>
+    <button class="btn-primary" id="btn-1" onclick="goTo(2)" disabled>Continue →</button>
+  </div>
+
+  <!-- Screen 2: School name -->
+  <div class="screen" id="screen-2">
+    <h1>What's your school called?</h1>
+    <p>Start typing and select from the list. This lets us personalise your Ofsted report.</p>
+    <label for="school-input">School name</label>
+    <div class="ac-wrap">
+      <input type="text" id="school-input" placeholder="e.g. Greenfield Primary School"
+        autocomplete="off" oninput="acInput(this.value)" onkeydown="acKey(event)">
+      <div class="ac-dropdown" id="ac-dropdown"></div>
+    </div>
+    <span class="not-listed" id="not-listed" onclick="useManualSchool()">My school isn't listed, continue anyway →</span>
+    <div class="error-msg" id="err-2"></div>
+    <button class="btn-primary" id="btn-2" onclick="goTo(3)" disabled>Continue →</button>
+    <button class="btn-back" onclick="goTo(1)">← Back</button>
+  </div>
+
+  <!-- Screen 3: Classes -->
+  <div class="screen" id="screen-3">
+    <h1>Which classes will take part?</h1>
+    <p>Add each class that will run the debates. You can add more later.</p>
+    <div class="class-list" id="class-list"></div>
+    <div class="add-class-row">
+      <input type="text" id="class-input" placeholder="e.g. Year 3 Oak"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();addClass()}"
+        oninput="chkScreen3()">
+      <button class="btn-add" onclick="addClass()">+</button>
+    </div>
+    <p class="class-hint">Press Enter or tap + to add each class</p>
+    <div class="error-msg" id="err-3"></div>
+    <button class="btn-primary" id="btn-3" onclick="goTo(4)" disabled>Continue →</button>
+    <button class="btn-back" onclick="goTo(2)">← Back</button>
+  </div>
+
+  <!-- Screen 4: Pick debate -->
+  <div class="screen" id="screen-4">
+    <h1>Pick your first debate</h1>
+    <p>Choose one question to start with. We'll set it up and email you the link.</p>
+    <div class="value-list" id="value-list"></div>
+    <div class="error-msg" id="err-4"></div>
+    <button class="btn-primary" id="btn-4" onclick="submit()" disabled>Set up my first debate →</button>
+    <button class="btn-back" onclick="goTo(3)">← Back</button>
+  </div>
+
+  <!-- Loading state -->
+  <div class="loading-state" id="loading">
+    <div class="spinner"></div>
+    <p>Setting up your school...</p>
+    <p class="loading-step" id="loading-step">This takes about 30 seconds</p>
+  </div>
+
+  <!-- Screen 5: Done -->
+  <div class="screen" id="screen-5">
+    <div class="done-icon">🎉</div>
+    <h1>You're all set!</h1>
+    <p>Your school is set up and your first debate is ready. Check your inbox — the link is on its way.</p>
+    <div class="done-meeting-box" id="done-meeting-box">
+      📬 Your debate link will arrive at <strong id="done-email"></strong> within a minute.
+    </div>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">
+      Once you receive the link, open it on your classroom screen to run the debate with your class.
+    </p>
+    <button class="btn-primary" onclick="window.location.href='https://british-values.smartschoolcouncils.org.uk'">
+      Go to your portal →
+    </button>
+  </div>
+</div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────
+const GAS_URL         = 'https://script.google.com/macros/s/AKfycbyaY7U-GUoGQoRq9Vo8dC583MD2XSlajS3ABnk2k5h-wS9EjGT5vmvzZBe-J_T5I30ZZA/exec';
+const SCHOOL_SEARCH   = 'https://bigdebate.club/school-search.php';
+const TOTAL_SCREENS   = 5;
+
+// ── DEBATES ──────────────────────────────────────────────────
+const BV_VALUES = [
+  {
+    id: 'democracy', emoji: '🗳️', label: 'Democracy',
+    questions: [
+      { q: 'Should pupils have more say in how their school is run?',    options: ['Yes, give pupils a say', 'No, leave it to teachers'] },
+      { q: 'Is it fair that some people\'s votes count more than others?', options: ['Yes, some voices matter more', 'No, every vote should be equal'] }
+    ]
+  },
+  {
+    id: 'rule-of-law', emoji: '⚖️', label: 'Rule of Law',
+    questions: [
+      { q: 'Should there be laws that protect people even if most people disagree?', options: ['Yes, rights need protecting', 'No, the majority should decide'] },
+      { q: 'Is it ever right to break the law?',                                    options: ['Yes, if it\'s unjust', 'No, change it through proper channels'] }
+    ]
+  },
+  {
+    id: 'individual-liberty', emoji: '🕊️', label: 'Individual Liberty',
+    questions: [
+      { q: 'Should people be free to say anything they want, even if it upsets others?', options: ['Yes, free speech is fundamental', 'No, words can cause real harm'] },
+      { q: 'Does freedom mean doing what you want, or doing what is right?',              options: ['Doing what you want', 'Doing what is right'] }
+    ]
+  },
+  {
+    id: 'mutual-respect', emoji: '🤝', label: 'Mutual Respect',
+    questions: [
+      { q: 'Is respect something that should be earned, or given to everyone automatically?', options: ['It must be earned', 'Everyone deserves it automatically'] },
+      { q: 'Can you respect someone if you strongly disagree with their beliefs?',            options: ['Yes, always', 'No, some views don\'t deserve respect'] }
+    ]
+  },
+  {
+    id: 'tolerance', emoji: '🌍', label: 'Tolerance',
+    questions: [
+      { q: 'Is tolerating something the same as accepting it?',                          options: ['Yes, they\'re the same', 'No, you can tolerate without accepting'] },
+      { q: 'Should schools teach pupils about all religions, or leave that to families?', options: ['Schools should teach it', 'Leave it to families'] }
+    ]
+  }
+];
+
+// ── STATE ────────────────────────────────────────────────────
+let currentScreen = 1;
+let state = {
+  firstName: '', lastName: '', email: '',
+  schoolName: '', urn: '', schoolType: '',
+  classes: [],
+  question: '', options: []
+};
+let openValue  = null;
+let acTimer    = null;
+let acResults  = [];
+
+// ── INIT ─────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  renderDots();
+  renderValueList();
+
+  // Pre-fill from portal session if available
+  try {
+    const session = JSON.parse(localStorage.getItem('bv_session') || '{}');
+    if (session.email) {
+      document.getElementById('email-field').value = session.email;
+      state.email = session.email;
+    }
+    if (session.schoolName && session.schoolName !== 'Your School') {
+      // Pre-fill welcome heading with first name if available
+    }
+    // Try to extract first name from schoolName (rough heuristic)
+    // Mostly we just show "Welcome!" and let them fill in their name
+  } catch(e) {}
+  chkScreen1();
+});
+
+// ── DOTS ──────────────────────────────────────────────────────
+function renderDots() {
+  const dots = document.getElementById('dots');
+  dots.innerHTML = '';
+  for (let i = 1; i <= TOTAL_SCREENS; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === currentScreen ? ' active' : i < currentScreen ? ' done' : '');
+    dots.appendChild(d);
+  }
+}
+
+// ── NAVIGATION ───────────────────────────────────────────────
+function goTo(n) {
+  document.getElementById('screen-' + currentScreen).classList.remove('active');
+  currentScreen = n;
+  const next = document.getElementById('screen-' + n);
+  if (next) {
+    next.classList.add('active');
+    renderDots();
+    if (n === 3) chkScreen3();
+    if (n === 4) chkScreen4();
+  }
+  // Focus first input
+  const inp = next && next.querySelector('input');
+  if (inp) setTimeout(() => inp.focus(), 100);
+}
+
+// ── SCREEN 1: DETAILS ────────────────────────────────────────
+function chkScreen1() {
+  const fn    = document.getElementById('first-name').value.trim();
+  const ln    = document.getElementById('last-name').value.trim();
+  const email = document.getElementById('email-field').value.trim();
+  const valid = fn && ln && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  document.getElementById('btn-1').disabled = !valid;
+  if (valid) {
+    state.firstName = fn;
+    state.lastName  = ln;
+    state.email     = email;
+  }
+}
+
+// ── SCREEN 2: SCHOOL AUTOCOMPLETE ───────────────────────────
+function acInput(val) {
+  state.schoolName = val;
+  state.urn = '';
+  clearTimeout(acTimer);
+  const dd = document.getElementById('ac-dropdown');
+  const nl = document.getElementById('not-listed');
+  document.getElementById('btn-2').disabled = true;
+
+  if (val.length < 2) {
+    dd.innerHTML = ''; dd.classList.remove('open');
+    nl.classList.remove('visible');
+    return;
+  }
+  dd.innerHTML = '<div class="ac-spinner">Searching...</div>';
+  dd.classList.add('open');
+  acTimer = setTimeout(() => {
+    fetch(SCHOOL_SEARCH + '?q=' + encodeURIComponent(val))
+      .then(r => r.json())
+      .then(results => {
+        acResults = results;
+        nl.classList.add('visible');
+        if (!results.length) {
+          dd.innerHTML = '<div class="ac-spinner">No schools found</div>';
+          return;
+        }
+        dd.innerHTML = results.map((s, i) =>
+          `<div class="ac-item" data-idx="${i}">
+            <span class="ac-name">${s.name}</span>
+            <span class="ac-meta">${s.town ? s.town + ' · ' : ''}${s.postcode}</span>
+          </div>`
+        ).join('');
+        dd.querySelectorAll('.ac-item').forEach((el, i) => {
+          el.addEventListener('mousedown', e => { e.preventDefault(); acSelect(results[i]); });
+        });
+      })
+      .catch(() => {
+        nl.classList.add('visible');
+        dd.innerHTML = '<div class="ac-spinner">Search unavailable</div>';
+      });
+  }, 280);
+}
+
+function acKey(e) {
+  if (e.key === 'Escape') document.getElementById('ac-dropdown').classList.remove('open');
+}
+
+function acSelect(s) {
+  document.getElementById('school-input').value = s.name;
+  document.getElementById('ac-dropdown').classList.remove('open');
+  document.getElementById('not-listed').classList.remove('visible');
+  state.schoolName = s.name;
+  state.urn        = s.urn || '';
+  state.schoolType = guessSchoolType(s.phase, s.type);
+  document.getElementById('btn-2').disabled = false;
+}
+
+function useManualSchool() {
+  const name = document.getElementById('school-input').value.trim();
+  if (name) { state.schoolName = name; state.urn = ''; }
+  document.getElementById('ac-dropdown').classList.remove('open');
+  document.getElementById('not-listed').classList.remove('visible');
+  document.getElementById('btn-2').disabled = !name;
+}
+
+function guessSchoolType(phase, type) {
+  if (!phase && !type) return '';
+  if (/independent/i.test(type||'')) return /primary/i.test(phase||'') ? 'ind_primary' : 'ind_secondary';
+  if (/primary|middle/i.test(phase||'')) return 'primary';
+  if (/secondary/i.test(phase||'')) return 'secondary';
+  if (/special|pru/i.test(type||'')) return 'sen';
+  return 'primary';
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.ac-wrap')) {
+    const dd = document.getElementById('ac-dropdown');
+    if (dd) dd.classList.remove('open');
+  }
+});
+
+// ── SCREEN 3: CLASSES ────────────────────────────────────────
+function addClass() {
+  const inp = document.getElementById('class-input');
+  const val = inp.value.trim();
+  if (!val) return;
+  if (state.classes.includes(val)) { inp.value = ''; return; }
+  state.classes.push(val);
+  inp.value = '';
+  renderClasses();
+  chkScreen3();
+  inp.focus();
+}
+
+function removeClass(name) {
+  state.classes = state.classes.filter(c => c !== name);
+  renderClasses();
+  chkScreen3();
+}
+
+function renderClasses() {
+  const list = document.getElementById('class-list');
+  list.innerHTML = state.classes.map(c =>
+    `<div class="class-tag">
+      <span>${c}</span>
+      <button onclick="removeClass('${c.replace(/'/g,"\\'")}')">×</button>
+    </div>`
+  ).join('');
+}
+
+function chkScreen3() {
+  document.getElementById('btn-3').disabled = state.classes.length === 0;
+}
+
+// ── SCREEN 4: DEBATE PICKER ──────────────────────────────────
+function renderValueList() {
+  const list = document.getElementById('value-list');
+  list.innerHTML = BV_VALUES.map(v => {
+    const isOpen = openValue === v.id;
+    return `<div class="value-card${isOpen ? ' open' : ''}" id="vc-${v.id}">
+      <div class="value-header" onclick="toggleValue('${v.id}')">
+        <span class="value-emoji">${v.emoji}</span>
+        <span class="value-name">${v.label}</span>
+        <span class="value-chevron">▼</span>
+      </div>
+      <div class="value-questions">
+        ${v.questions.map((q, i) =>
+          `<button class="q-btn${state.question === q.q ? ' selected' : ''}"
+            onclick="selectQuestion('${v.id}', ${i})">${q.q}</button>`
+        ).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleValue(id) {
+  openValue = openValue === id ? null : id;
+  renderValueList();
+}
+
+function selectQuestion(valueId, qi) {
+  const v = BV_VALUES.find(x => x.id === valueId);
+  if (!v) return;
+  state.question = v.questions[qi].q;
+  state.options  = v.questions[qi].options;
+  renderValueList();
+  chkScreen4();
+}
+
+function chkScreen4() {
+  document.getElementById('btn-4').disabled = !state.question;
+}
+
+// ── SUBMIT ───────────────────────────────────────────────────
+async function submit() {
+  // Validate
+  if (!state.firstName || !state.email || !state.schoolName || !state.classes.length || !state.question) {
+    showError('err-4', 'Something is missing. Please go back and check your details.');
+    return;
+  }
+
+  // Show loading
+  document.getElementById('screen-4').classList.remove('active');
+  document.getElementById('loading').classList.add('visible');
+  renderDots();
+
+  const steps = [
+    'Creating your school account...',
+    'Setting up your classes...',
+    'Preparing your first debate...',
+    'Sending your meeting link...',
+    'Almost done...'
+  ];
+  let stepIdx = 0;
+  const stepEl = document.getElementById('loading-step');
+  const stepTimer = setInterval(() => {
+    if (stepIdx < steps.length - 1) stepIdx++;
+    stepEl.textContent = steps[stepIdx];
+  }, 6000);
+
+  try {
+    const payload = {
+      firstName:  state.firstName,
+      lastName:   state.lastName,
+      email:      state.email,
+      schoolName: state.schoolName,
+      schoolType: state.schoolType || 'primary',
+      classes:    state.classes,
+      question:   state.question,
+      options:    state.options,
+      subsidised: false,
+      source:     'bv-pack'
+    };
+
+    const resp = await fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await resp.json();
+
+    clearInterval(stepTimer);
+    document.getElementById('loading').classList.remove('visible');
+
+    if (data.success) {
+      document.getElementById('done-email').textContent = state.email;
+      currentScreen = 5;
+      document.getElementById('screen-5').classList.add('active');
+      renderDots();
+
+      // Update portal session with school name
+      try {
+        const session = JSON.parse(localStorage.getItem('bv_session') || '{}');
+        session.schoolName = state.schoolName;
+        session.firstName  = state.firstName;
+        localStorage.setItem('bv_session', JSON.stringify(session));
+        localStorage.setItem('bv_onboarded', '1');
+      } catch(e) {}
+    } else {
+      throw new Error(data.error || 'Setup failed');
+    }
+  } catch(err) {
+    clearInterval(stepTimer);
+    document.getElementById('loading').classList.remove('visible');
+    document.getElementById('screen-4').classList.add('active');
+    showError('err-4', 'Something went wrong. Please try again or email hello@smartschoolcouncils.org.uk');
+    console.error(err);
+  }
+}
+
+// ── HELPERS ──────────────────────────────────────────────────
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg;
+  el.classList.add('visible');
+  setTimeout(() => el.classList.remove('visible'), 6000);
+}
+</script>
+
+</body>
+</html>
