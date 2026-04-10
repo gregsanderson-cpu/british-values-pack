@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇬🇧</text></svg>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- ═══════════════ SEO ═══════════════ -->
@@ -18,7 +19,7 @@
   <!-- Analytics -->
   <!-- Add your Google Analytics tracking ID here -->
   
-  <link rel="canonical" href="https://britishvalues.org/">
+  <link rel="canonical" href="https://britishvalues.org/"
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -833,6 +834,10 @@
   <a class="nav-brand" href="/">
     🇬🇧 British Values <span>by Smart School Councils</span>
   </a>
+  <a href="https://british-values.smartschoolcouncils.org.uk" 
+   style="font-size:0.85rem; color:#555; text-decoration:none; margin-right:16px;">
+  Already bought? Sign in →
+</a>
   <a class="nav-cta" href="#get-pack">Get the Pack - £49</a>
 </nav>
 
@@ -1600,7 +1605,7 @@
   // Format: https://smart-school-councils.chargebee.com/hosted_pages/plans/PLAN_ID
   document.getElementById('purchaseBtn').addEventListener('click', function (e) {
     e.preventDefault();
-    alert('Purchase flow coming soon - Chargebee plan ID needed from Janine.');
+    window.location.href = 'https://buy.stripe.com/8x24gzdYWb9Cbsba0V8bS07';
   });
 
   // ─── INIT ──────────────────────────────────────────
