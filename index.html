@@ -761,6 +761,18 @@
     </nav>
   </div>
 </footer>
+  <script>
+  // If logged in (shared cookie from portal), swap "Log in" → "Dashboard"
+  if (document.cookie.split('; ').some(c => c.trim().startsWith('bv_logged_in=1'))) {
+    document.querySelectorAll('a').forEach(a => {
+      if (a.textContent.trim().toLowerCase() === 'log in') {
+        a.textContent = 'Dashboard';
+        a.href = 'https://british-values.smartschoolcouncils.org.uk/dashboard.html';
+      }
+    });
+  }
+</script>
 
+  
 </body>
 </html>
