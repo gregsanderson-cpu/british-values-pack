@@ -1,778 +1,597 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get started — British Values Pack</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇬🇧</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --green:      #2e7d32;
-      --green-light:#4caf50;
-      --green-pale: #e8f5e9;
-      --green-dark: #1b5e20;
-      --text:       #1a1a1a;
-      --muted:      #555;
-      --border:     #e0e0e0;
-      --bg:         #f0f4f0;
-      --red:        #c62828;
-    }
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--bg);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set up your school · British Values Pack</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'><clipPath id='s'><path d='M0,0 v30 h60 v-30 z'/></clipPath><clipPath id='t'><path d='M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z'/></clipPath><rect width='60' height='30' fill='%23012169'/><g clip-path='url(%23s)'><path d='M0,0 L60,30 M60,0 L0,30' stroke='%23fff' stroke-width='6'/><path d='M0,0 L60,30 M60,0 L0,30' clip-path='url(%23t)' stroke='%23C8102E' stroke-width='4'/><path d='M30,0 v30 M0,15 h60' stroke='%23fff' stroke-width='10'/><path d='M30,0 v30 M0,15 h60' stroke='%23C8102E' stroke-width='6'/></g></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #0E2240;
+  --navy-80:   #2a3b57;
+  --cream:     #F5EFE4;
+  --cream-deep:#EDE4D3;
+  --ink:       #0a0a0a;
+  --ink-60:    #4a4a4a;
+  --red:       #C8362B;
+  --red-dark:  #a82c22;
+  --rule:      #0E22401a;
+  --green:     #2d7a35;
+  --ks1-bg:    #EAF0FA;
+  --ks1-border:#6B8FCC;
+  --ks1-text:  #1a3a6e;
+  --ks2-bg:    #EAF5EC;
+  --ks2-border:#4A8C52;
+  --ks2-text:  #1a4a22;
+}
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;}
+.nav{padding:20px 0;border-bottom:1px solid var(--rule);flex-shrink:0;}
+.nav-inner{max-width:680px;margin:0 auto;padding:0 28px;display:flex;align-items:center;}
+.brand{font-family:"Fraunces",serif;font-weight:600;color:var(--navy);text-decoration:none;font-size:1rem;display:inline-flex;align-items:center;gap:10px;}
+.brand-logo{width:32px;height:16px;border-radius:2px;overflow:hidden;flex-shrink:0;}
+.brand-logo svg{display:block;width:100%;height:100%;}
+.brand .dot{color:var(--red);}
+.progress-track{height:2px;background:var(--rule);flex-shrink:0;}
+.progress-fill{height:100%;background:var(--navy);transition:width 0.4s ease;}
+main{flex:1;display:flex;flex-direction:column;align-items:center;padding:56px 28px 80px;}
+.wrap{width:100%;max-width:560px;}
+.step-label{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:16px;display:block;}
+h1{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.05;color:var(--navy);letter-spacing:-0.01em;margin:0 0 10px;}
+.sub{font-size:.95rem;color:var(--ink-60);margin:0 0 36px;max-width:48ch;}
 
-    /* ── CARD ── */
-    .card {
-      background: #fff;
-      border-radius: 24px;
-      padding: 48px 44px 40px;
-      max-width: 480px;
-      width: 100%;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.10);
-    }
+/* Fields */
+.field{margin-bottom:20px;}
+.field label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:8px;}
+.finput{width:100%;border:1px solid var(--navy);background:var(--cream);padding:13px 14px;font-family:"Inter",sans-serif;font-size:1rem;color:var(--ink);outline:none;border-radius:0;transition:background .15s;-webkit-appearance:none;display:block;}
+.finput:focus{background:#fff;}
+select.finput{cursor:pointer;}
+.ferr{font-size:.8rem;color:var(--red);margin-top:5px;display:none;font-weight:500;}
+.ferr.show{display:block;}
 
-    /* ── PROGRESS DOTS ── */
-    .dots {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      margin-bottom: 36px;
-    }
-    .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--border);
-      transition: background 0.3s, width 0.3s;
-    }
-    .dot.active {
-      background: var(--green);
-      width: 24px;
-      border-radius: 4px;
-    }
-    .dot.done { background: var(--green-light); }
+/* Unroll */
+.reveal{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s cubic-bezier(0.4,0,0.2,1),opacity .35s ease,margin-top .4s ease;margin-top:0!important;}
+.reveal.shown{max-height:700px;opacity:1;margin-top:24px!important;}
 
-    /* ── SCREENS ── */
-    .screen { display: none; animation: fadeUp 0.25s ease; }
-    .screen.active { display: block; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+/* Autocomplete */
+.ac-wrap{position:relative;}
+.ac-drop{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--navy);border-top:none;max-height:240px;overflow-y:auto;z-index:100;}
+.ac-drop.open{display:block;}
+.ac-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--rule);font-size:.9rem;}
+.ac-item:last-child{border-bottom:none;}
+.ac-item:hover,.ac-item.hi{background:var(--cream-deep);}
+.ac-name{font-weight:600;color:var(--navy);}
+.ac-meta{font-size:.78rem;color:var(--ink-60);margin-top:1px;}
+.ac-msg{padding:10px 14px;font-size:.85rem;color:var(--ink-60);}
+.not-listed{font-size:.8rem;color:var(--ink-60);margin-top:8px;cursor:pointer;text-decoration:underline;display:none;}
+.not-listed.show{display:block;}
 
-    /* ── TYPOGRAPHY ── */
-    .screen h1 {
-      font-size: 22px;
-      font-weight: 900;
-      color: var(--green-dark);
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-    .screen p {
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-    label {
-      display: block;
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--text);
-      margin-bottom: 6px;
-    }
+/* Classes */
+.section-label{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:10px;display:block;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.tag{display:inline-flex;align-items:center;gap:6px;border:1px solid;padding:5px 10px 5px 12px;font-size:.82rem;font-weight:600;}
+.tag.ks1{background:var(--ks1-bg);border-color:var(--ks1-border);color:var(--ks1-text);}
+.tag.ks2{background:var(--ks2-bg);border-color:var(--ks2-border);color:var(--ks2-text);}
+.tag .ks-badge{font-size:.68rem;font-weight:700;letter-spacing:.05em;opacity:.7;}
+.tag button{background:none;border:none;cursor:pointer;font-size:1rem;line-height:1;padding:0;color:inherit;opacity:.6;}
+.tag button:hover{opacity:1;}
+.add-name-row{display:flex;}
+.add-name-row input{flex:1;border:1px solid var(--navy);border-right:none;background:var(--cream);padding:12px 14px;font-family:"Inter",sans-serif;font-size:.95rem;color:var(--ink);outline:none;border-radius:0;transition:background .15s;}
+.add-name-row input:focus{background:#fff;}
+.add-name-row button{background:var(--navy);color:#fff;border:1px solid var(--navy);padding:12px 20px;font-family:"Inter",sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;flex-shrink:0;border-radius:0;transition:background .15s;}
+.add-name-row button:hover{background:var(--navy-80);}
+.ks-toggle-row{display:flex;margin-top:-1px;}
+.ks-btn{flex:1;padding:9px 8px;font-family:"Inter",sans-serif;font-size:.8rem;font-weight:600;border:1px solid var(--navy);cursor:pointer;text-align:center;transition:background .15s,color .15s;background:var(--cream);color:var(--ink-60);}
+.ks-btn:first-child{border-right:none;}
+.ks-btn.active.ks1{background:var(--ks1-bg);color:var(--ks1-text);border-color:var(--ks1-border);}
+.ks-btn.active.ks2{background:var(--ks2-bg);color:var(--ks2-text);border-color:var(--ks2-border);}
+.ks-hint{font-size:.75rem;color:var(--ink-60);margin-top:8px;line-height:1.5;}
 
-    /* ── INPUTS ── */
-    input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 14px 16px;
-      border: 2px solid var(--border);
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 15px;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s;
-      margin-bottom: 16px;
-    }
-    input:focus { border-color: var(--green); }
-    input::placeholder { color: #bbb; font-weight: 400; }
+/* Value picker */
+.value-cards{display:flex;flex-direction:column;gap:0;margin-bottom:32px;}
+.value-card{
+  border-top:1px solid var(--navy);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 0;cursor:pointer;
+  transition:background .12s;
+  gap:16px;
+}
+.value-card:last-child{border-bottom:1px solid var(--navy);}
+.value-card:hover .value-card-name{color:var(--red);}
+.value-card.selected{background:var(--cream-deep);padding-left:14px;padding-right:14px;margin:0 -14px;}
+.value-card.selected .value-card-name{color:var(--green);}
+.value-card-name{font-family:"Fraunces",serif;font-size:1.1rem;font-weight:500;color:var(--navy);transition:color .15s;flex:1;}
+.value-card-num{font-family:"Fraunces",serif;font-size:.85rem;color:var(--ink-60);font-weight:500;flex-shrink:0;}
+.value-card-check{
+  width:20px;height:20px;border:1px solid var(--navy);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:.7rem;color:transparent;transition:all .15s;
+}
+.value-card.selected .value-card-check{background:var(--green);border-color:var(--green);color:#fff;}
 
-    /* ── AUTOCOMPLETE ── */
-    .ac-wrap { position: relative; }
-    .ac-dropdown {
-      display: none;
-      position: absolute;
-      top: calc(100% - 12px);
-      left: 0; right: 0;
-      background: #fff;
-      border: 2px solid var(--green);
-      border-radius: 14px;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-      z-index: 100;
-      max-height: 220px;
-      overflow-y: auto;
-    }
-    .ac-dropdown.open { display: block; }
-    .ac-item {
-      padding: 11px 16px;
-      cursor: pointer;
-      border-bottom: 1px solid #f0f0ea;
-      transition: background 0.1s;
-    }
-    .ac-item:last-child { border-bottom: none; }
-    .ac-item:hover { background: var(--green-pale); }
-    .ac-name { display: block; font-weight: 700; font-size: 14px; color: var(--text); }
-    .ac-meta { font-size: 12px; color: #999; }
-    .ac-spinner { padding: 12px 16px; font-size: 13px; color: #aaa; }
-    .not-listed {
-      font-size: 13px; color: var(--green); font-weight: 700;
-      cursor: pointer; margin-top: -8px; margin-bottom: 16px;
-      display: none;
-    }
-    .not-listed.visible { display: block; }
+/* Buttons */
+.btn{display:block;width:100%;background:var(--red);color:#fff;border:1px solid var(--red-dark);padding:15px 28px;font-family:"Inter",sans-serif;font-weight:600;font-size:.98rem;cursor:pointer;text-align:center;border-radius:0;transition:background .15s;letter-spacing:.01em;}
+.btn:hover{background:var(--red-dark);}
+.btn:disabled{opacity:.4;cursor:not-allowed;}
+.btn-ghost{display:block;width:100%;background:none;border:1px solid var(--rule);color:var(--ink-60);padding:13px 28px;font-family:"Inter",sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;text-align:center;border-radius:0;margin-top:10px;transition:border-color .15s,color .15s;}
+.btn-ghost:hover{border-color:var(--navy);color:var(--navy);}
 
-    /* ── CLASSES ── */
-    .class-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 16px;
-      max-height: 200px;
-      overflow-y: auto;
-    }
-    .class-tag {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--green-pale);
-      border-radius: 10px;
-      padding: 10px 14px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--green-dark);
-      animation: fadeUp 0.2s ease;
-    }
-    .class-tag button {
-      background: none; border: none; cursor: pointer;
-      color: var(--green); font-size: 16px; line-height: 1;
-      padding: 0 0 0 8px;
-    }
-    .add-class-row {
-      display: flex;
-      gap: 8px;
-    }
-    .add-class-row input {
-      flex: 1;
-      margin-bottom: 0;
-    }
-    .btn-add {
-      background: var(--green-pale);
-      color: var(--green-dark);
-      border: 2px solid var(--green-pale);
-      border-radius: 12px;
-      padding: 0 18px;
-      font-family: inherit;
-      font-size: 20px;
-      font-weight: 900;
-      cursor: pointer;
-      transition: background 0.15s;
-      white-space: nowrap;
-    }
-    .btn-add:hover { background: #c8e6c9; }
-    .class-hint { font-size: 12px; color: #aaa; margin-top: 8px; margin-bottom: 20px; }
+/* Alert */
+.alert{background:#fef2f0;border:1px solid var(--red);padding:11px 14px;font-size:.85rem;color:var(--red);margin-bottom:20px;display:none;font-weight:500;}
+.alert.show{display:block;}
 
-    /* ── DEBATE PICKER ── */
-    .value-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 24px;
-    }
-    .value-card {
-      border: 2px solid var(--border);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: border-color 0.2s;
-    }
-    .value-card.open { border-color: var(--green); }
-    .value-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 16px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .value-header:hover { background: var(--green-pale); }
-    .value-emoji { font-size: 20px; flex-shrink: 0; }
-    .value-name { font-weight: 800; font-size: 14px; color: var(--text); flex: 1; }
-    .value-chevron {
-      font-size: 12px; color: #aaa;
-      transition: transform 0.2s;
-    }
-    .value-card.open .value-chevron { transform: rotate(180deg); }
-    .value-questions {
-      display: none;
-      padding: 0 12px 12px;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .value-card.open .value-questions { display: flex; }
-    .q-btn {
-      width: 100%;
-      text-align: left;
-      background: #fafaf7;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text);
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      line-height: 1.4;
-    }
-    .q-btn:hover { background: var(--green-pale); border-color: var(--green-light); }
-    .q-btn.selected {
-      background: var(--green-pale);
-      border-color: var(--green);
-      color: var(--green-dark);
-    }
-    .q-btn.selected::before { content: '✓ '; }
+/* KS summary (shown on step 2) */
+.ks-summary{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+.ks-pill{font-size:.8rem;font-weight:600;padding:5px 12px;border:1px solid;}
+.ks-pill.ks1{background:var(--ks1-bg);border-color:var(--ks1-border);color:var(--ks1-text);}
+.ks-pill.ks2{background:var(--ks2-bg);border-color:var(--ks2-border);color:var(--ks2-text);}
 
-    /* ── BUTTONS ── */
-    .btn-primary {
-      width: 100%;
-      padding: 16px;
-      background: var(--green);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      font-family: inherit;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: background 0.2s, opacity 0.2s;
-      margin-top: 4px;
-    }
-    .btn-primary:hover:not(:disabled) { background: var(--green-dark); }
-    .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
-    .btn-back {
-      background: none; border: none;
-      font-family: inherit; font-size: 13px;
-      color: #aaa; cursor: pointer;
-      margin-top: 16px; width: 100%; text-align: center;
-      padding: 4px;
-    }
-    .btn-back:hover { color: var(--green); }
+/* Loading */
+.loading{text-align:center;padding:60px 0;}
+.spinner{width:34px;height:34px;border:2px solid var(--rule);border-top-color:var(--navy);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 20px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading p{font-size:.95rem;color:var(--ink-60);margin:0;}
+.loading .lsub{font-size:.8rem;color:#999;margin-top:6px;}
+.loading-steps{margin-top:24px;text-align:left;display:inline-block;}
+.lstep{font-size:.82rem;color:#bbb;padding:4px 0;display:flex;align-items:center;gap:8px;transition:color .3s;}
+.lstep.done{color:var(--green);}
+.lstep.active{color:var(--ink-60);}
+.lstep-dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0;}
 
-    /* ── DONE SCREEN ── */
-    .done-icon { font-size: 56px; text-align: center; margin-bottom: 16px; }
-    .done-meeting-box {
-      background: var(--green-pale);
-      border-radius: 12px;
-      padding: 16px 20px;
-      margin: 16px 0 24px;
-      font-size: 13px;
-      color: var(--green-dark);
-      font-weight: 600;
-      word-break: break-all;
-      line-height: 1.6;
-    }
-    .done-meeting-box a { color: var(--green-dark); font-weight: 800; }
+/* Success */
+.success-eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:16px;display:block;}
+.link-block{border:1px solid var(--navy);padding:20px;background:var(--cream-deep);margin-bottom:12px;}
+.link-block .lbl{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-60);margin-bottom:6px;display:block;}
+.link-block .ks-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;margin-bottom:8px;border:1px solid;}
+.link-block .ks-tag.ks1{background:var(--ks1-bg);border-color:var(--ks1-border);color:var(--ks1-text);}
+.link-block .ks-tag.ks2{background:var(--ks2-bg);border-color:var(--ks2-border);color:var(--ks2-text);}
+.link-block a{font-size:.88rem;font-weight:600;color:var(--navy);word-break:break-all;text-decoration:none;display:block;}
+.link-block a:hover{color:var(--red);}
+.success-note{font-size:.88rem;color:var(--ink-60);margin:16px 0 28px;}
 
-    /* ── ERROR ── */
-    .error-msg {
-      background: #ffebee; color: var(--red);
-      border-radius: 10px; padding: 12px 14px;
-      font-size: 13px; font-weight: 600;
-      margin-bottom: 16px; display: none;
-    }
-    .error-msg.visible { display: block; }
-
-    /* ── LOADING ── */
-    .loading-state {
-      text-align: center;
-      padding: 32px 0;
-      display: none;
-    }
-    .loading-state.visible { display: block; }
-    .spinner {
-      width: 40px; height: 40px;
-      border: 3px solid var(--green-pale);
-      border-top-color: var(--green);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin: 0 auto 16px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loading-state p { font-size: 14px; color: var(--muted); font-weight: 600; }
-    .loading-state .loading-step {
-      font-size: 12px; color: #aaa; margin-top: 8px;
-    }
-
-    @media (max-width: 520px) {
-      .card { padding: 32px 24px 28px; }
-      body { padding: 16px; align-items: flex-start; }
-    }
-  </style>
+/* Screen */
+.screen{display:none;animation:fadeUp .22s ease both;}
+.screen.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:480px){main{padding:32px 20px 60px;}}
+</style>
 </head>
 <body>
 
-<div class="card">
-  <!-- Progress dots -->
-  <div class="dots" id="dots"></div>
-
-  <!-- Screen 1: Welcome -->
-  <div class="screen active" id="screen-1">
-    <h1 id="welcome-heading">Welcome! Let's get you set up.</h1>
-    <p>This takes about 2 minutes. We'll set up your school and get your first British Values debate ready.</p>
-    <label for="first-name">Your first name</label>
-    <input type="text" id="first-name" placeholder="e.g. Sarah" oninput="chkScreen1()">
-    <label for="last-name">Your last name</label>
-    <input type="text" id="last-name" placeholder="e.g. Jones" oninput="chkScreen1()">
-    <label for="email-field">Your school email</label>
-    <input type="email" id="email-field" placeholder="e.g. s.jones@greenfield.sch.uk" oninput="chkScreen1()">
-    <div class="error-msg" id="err-1"></div>
-    <button class="btn-primary" id="btn-1" onclick="goTo(2)" disabled>Continue →</button>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="https://british-values-resources.smartschoolcouncils.org.uk">
+      <span class="brand-logo" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30">
+          <clipPath id="bs"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+          <clipPath id="bt"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+          <rect width="60" height="30" fill="#012169"/>
+          <g clip-path="url(#bs)">
+            <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+            <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#bt)" stroke="#C8102E" stroke-width="4"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+            <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+          </g>
+        </svg>
+      </span>
+      <span>Smart School Councils</span>
+      <span class="dot">·</span>
+      <span>British Values</span>
+    </a>
   </div>
+</header>
 
-  <!-- Screen 2: School name -->
-  <div class="screen" id="screen-2">
-    <h1>What's your school called?</h1>
-    <p>Start typing and select from the list. This lets us personalise your Ofsted report.</p>
-    <label for="school-input">School name</label>
-    <div class="ac-wrap">
-      <input type="text" id="school-input" placeholder="e.g. Greenfield Primary School"
-        autocomplete="off" oninput="acInput(this.value)" onkeydown="acKey(event)">
-      <div class="ac-dropdown" id="ac-dropdown"></div>
-    </div>
-    <span class="not-listed" id="not-listed" onclick="useManualSchool()">My school isn't listed, continue anyway →</span>
-    <div class="error-msg" id="err-2"></div>
-    <button class="btn-primary" id="btn-2" onclick="goTo(3)" disabled>Continue →</button>
-    <button class="btn-back" onclick="goTo(1)">← Back</button>
-  </div>
-
-  <!-- Screen 3: Classes -->
-  <div class="screen" id="screen-3">
-    <h1>Which classes will take part?</h1>
-    <p>Add each class that will run the debates. You can add more later.</p>
-    <div class="class-list" id="class-list"></div>
-    <div class="add-class-row">
-      <input type="text" id="class-input" placeholder="e.g. Year 3 Oak"
-        onkeydown="if(event.key==='Enter'){event.preventDefault();addClass()}"
-        oninput="chkScreen3()">
-      <button class="btn-add" onclick="addClass()">+</button>
-    </div>
-    <p class="class-hint">Press Enter or tap + to add each class</p>
-    <div class="error-msg" id="err-3"></div>
-    <button class="btn-primary" id="btn-3" onclick="goTo(4)" disabled>Continue →</button>
-    <button class="btn-back" onclick="goTo(2)">← Back</button>
-  </div>
-
-  <!-- Screen 4: Pick debate -->
-  <div class="screen" id="screen-4">
-    <h1>Pick your first debate</h1>
-    <p>Choose one question to start with. We'll set it up and email you the link.</p>
-    <div class="value-list" id="value-list"></div>
-    <div class="error-msg" id="err-4"></div>
-    <button class="btn-primary" id="btn-4" onclick="submit()" disabled>Set up my first debate →</button>
-    <button class="btn-back" onclick="goTo(3)">← Back</button>
-  </div>
-
-  <!-- Loading state -->
-  <div class="loading-state" id="loading">
-    <div class="spinner"></div>
-    <p>Setting up your school...</p>
-    <p class="loading-step" id="loading-step">This takes about 30 seconds</p>
-  </div>
-
-  <!-- Screen 5: Done -->
-  <div class="screen" id="screen-5">
-    <div class="done-icon">🎉</div>
-    <h1>You're all set!</h1>
-    <p>Your school is set up and your first debate is ready. Check your inbox — the link is on its way.</p>
-    <div class="done-meeting-box" id="done-meeting-box">
-      📬 Your debate link will arrive at <strong id="done-email"></strong> within a minute.
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">
-      Once you receive the link, open it on your classroom screen to run the debate with your class.
-    </p>
-    <button class="btn-primary" onclick="window.location.href='https://british-values.smartschoolcouncils.org.uk'">
-      Go to your portal →
-    </button>
-  </div>
+<div class="progress-track">
+  <div class="progress-fill" id="pFill" style="width:0%"></div>
 </div>
 
-<script>
-// ── CONFIG ──────────────────────────────────────────────────
-const GAS_URL         = 'https://script.google.com/macros/s/AKfycbyaY7U-GUoGQoRq9Vo8dC583MD2XSlajS3ABnk2k5h-wS9EjGT5vmvzZBe-J_T5I30ZZA/exec';
-const SCHOOL_SEARCH   = 'https://bigdebate.club/school-search.php';
-const TOTAL_SCREENS   = 5;
+<main><div class="wrap">
 
-// ── DEBATES ──────────────────────────────────────────────────
-const BV_VALUES = [
-  {
-    id: 'democracy', emoji: '🗳️', label: 'Democracy',
-    questions: [
-      { q: 'Should pupils have more say in how their school is run?',      options: ['Yes, give pupils a say', 'No, leave it to teachers'],          suggestionId: 3222 },
-      { q: 'Is it fair that some people\'s votes count more than others?', options: ['Yes, some voices matter more', 'No, every vote should be equal'], suggestionId: 3222 }
-    ]
-  },
-  {
-    id: 'rule-of-law', emoji: '⚖️', label: 'Rule of Law',
-    questions: [
-      { q: 'Should there be laws that protect people even if most people disagree?', options: ['Yes, rights need protecting', 'No, the majority should decide'],      suggestionId: 3222 },
-      { q: 'Is it ever right to break the law?',                                    options: ['Yes, if it\'s unjust', 'No, change it through proper channels'], suggestionId: 3222 }
-    ]
-  },
-  {
-    id: 'individual-liberty', emoji: '🕊️', label: 'Individual Liberty',
-    questions: [
-      { q: 'Should people be free to say anything they want, even if it upsets others?', options: ['Yes, free speech is fundamental', 'No, words can cause real harm'], suggestionId: 3222 },
-      { q: 'Does freedom mean doing what you want, or doing what is right?',              options: ['Doing what you want', 'Doing what is right'],                      suggestionId: 3222 }
-    ]
-  },
-  {
-    id: 'mutual-respect', emoji: '🤝', label: 'Mutual Respect',
-    questions: [
-      { q: 'Is respect something that should be earned, or given to everyone automatically?', options: ['It must be earned', 'Everyone deserves it automatically'],      suggestionId: 3222 },
-      { q: 'Can you respect someone if you strongly disagree with their beliefs?',            options: ['Yes, always', 'No, some views don\'t deserve respect'], suggestionId: 3222 }
-    ]
-  },
-  {
-    id: 'tolerance', emoji: '🌍', label: 'Tolerance',
-    questions: [
-      { q: 'Is tolerating something the same as accepting it?',                          options: ['Yes, they\'re the same', 'No, you can tolerate without accepting'], suggestionId: 3222 },
-      { q: 'Should schools teach pupils about all religions, or leave that to families?', options: ['Schools should teach it', 'Leave it to families'],                 suggestionId: 3222 }
-    ]
-  }
+  <!-- S1: School → name → classes -->
+  <div class="screen active" id="s1">
+    <span class="step-label">Step 1 of 2</span>
+    <h1>Let's set up your school.</h1>
+    <p class="sub">Find your school, add your classes, and we'll have your first debate ready in 2 minutes.</p>
+    <div class="alert" id="a1"></div>
+
+    <div class="field">
+      <label for="si">School name</label>
+      <div class="ac-wrap">
+        <input type="text" id="si" class="finput" placeholder="Start typing your school name…" autocomplete="off">
+        <div class="ac-drop" id="acDrop"></div>
+      </div>
+      <span class="not-listed" id="nlLink" onclick="useManual()">My school isn't listed</span>
+    </div>
+
+    <div id="mtWrap" style="display:none;">
+      <div class="field">
+        <label for="mt">School type</label>
+        <select id="mt" class="finput" onchange="chkS1()">
+          <option value="">Select…</option>
+          <option>Primary</option><option>Secondary</option>
+          <option>SEN / PRU</option><option>Independent</option>
+          <option>International / Other</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Name: unrolls after school -->
+    <div class="reveal" id="nameReveal">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="field" style="margin-bottom:0;">
+          <label for="fn">First name</label>
+          <input type="text" id="fn" class="finput" placeholder="e.g. Sarah" autocomplete="given-name" oninput="chkS1()">
+        </div>
+        <div class="field" style="margin-bottom:0;">
+          <label for="ln">Last name</label>
+          <input type="text" id="ln" class="finput" placeholder="e.g. Johnson" autocomplete="family-name" oninput="chkS1()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Classes: unrolls after name -->
+    <div class="reveal" id="classReveal">
+      <span class="section-label" style="margin-top:4px;">Your classes</span>
+      <p style="font-size:.85rem;color:var(--ink-60);margin:-4px 0 14px;line-height:1.5;">Add each class and mark it KS1 or KS2 — the platform uses the right version of each debate automatically.</p>
+      <div class="tags" id="tagList"></div>
+      <div class="add-name-row">
+        <input type="text" id="ci" placeholder="e.g. Year 5, 6B, Elm Class…" maxlength="40">
+        <button type="button" onclick="addClass()">Add</button>
+      </div>
+      <div class="ks-toggle-row">
+        <button type="button" class="ks-btn ks1 active" id="ksBtn1" onclick="setKs('KS1')">KS1 · Years 1–2</button>
+        <button type="button" class="ks-btn ks2" id="ksBtn2" onclick="setKs('KS2')">KS2 · Years 3–6</button>
+      </div>
+      <p class="ks-hint">Select the key stage before pressing Add. You can add classes from both key stages.</p>
+    </div>
+
+    <div style="margin-top:24px;">
+      <button class="btn" id="s1btn" onclick="goS2()" disabled>Choose your first debate →</button>
+    </div>
+  </div>
+
+  <!-- S2: Value picker -->
+  <div class="screen" id="s2">
+    <span class="step-label">Step 2 of 2</span>
+    <h1>Which British Value would you like to start with?</h1>
+    <p class="sub" style="margin-bottom:20px;">You'll run all five over the term. Pick one to begin.</p>
+
+    <!-- KS summary pills -->
+    <div class="ks-summary" id="ksSummary"></div>
+
+    <div class="alert" id="a2"></div>
+
+    <div class="value-cards" id="valuePicker"></div>
+
+    <button class="btn" id="s2btn" onclick="submit()" disabled>Set up my school →</button>
+    <button class="btn-ghost" onclick="back()">← Back</button>
+  </div>
+
+  <!-- Loading -->
+  <div class="screen" id="sLoad">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p id="loadMsg">Setting up your school…</p>
+      <p class="lsub" id="loadSub">This takes about 30 seconds.</p>
+      <div class="loading-steps" id="loadSteps"></div>
+    </div>
+  </div>
+
+  <!-- Success -->
+  <div class="screen" id="sOk">
+    <span class="success-eyebrow">You're all set</span>
+    <h1>Your first British Values debate is ready.</h1>
+    <p class="sub" style="margin-bottom:20px;">Share the link below with your classes — it works for every class in the school. We've emailed you a copy of your login details.</p>
+    <div id="linkBlocks"></div>
+    <p class="success-note">Open it on your whiteboard. Pupils discuss and vote. Run one debate per fortnight to cover all five values this term.</p>
+    <button class="btn" onclick="goPortal()">Go to my British Values dashboard →</button>
+  </div>
+
+</div></main>
+
+<script>
+var GAS_URL    = 'https://script.google.com/macros/s/AKfycbx6ocM7i_dQxcH5l9MDJgXNK4KLJdHon7owJno68QhuYG0WxgLX9ihV4ENLduRvJqT4-Q/exec';
+var SEARCH_URL = 'https://bigdebate.club/school-search.php';
+var PORTAL_URL = 'https://british-values.smartschoolcouncils.org.uk';
+
+// Five values, one suggestion ID per KS per value.
+// Replace placeholder IDs with real WP question bank IDs before go-live.
+var VALUES = [
+  { name:'Democracy',                            ks1id:3222, ks2id:3240 },
+  { name:'The Rule of Law',                      ks1id:3223, ks2id:3241 },
+  { name:'Individual Liberty',                   ks1id:3224, ks2id:3242 },
+  { name:'Mutual Respect',                       ks1id:3225, ks2id:3243 },
+  { name:'Tolerance of different faiths & beliefs', ks1id:3226, ks2id:3244 },
 ];
 
-// ── STATE ────────────────────────────────────────────────────
-let currentScreen = 1;
-let state = {
-  firstName: '', lastName: '', email: '',
-  schoolName: '', urn: '', schoolType: '',
-  classes: [],
-  question: '', options: [], suggestionId: null
+// Resolve email from sessionStorage (set by login page after magic link verified)
+var BV_EMAIL = sessionStorage.getItem('bv_email') || '';
+
+// State
+var S = {
+  firstName:'', lastName:'', schoolName:'', schoolUrn:'',
+  classes:[],   // [{name, ks}]
+  valueIdx: null,
 };
-let openValue  = null;
-let acTimer    = null;
-let acResults  = [];
+var schoolReady = false;
+var currentKs   = 'KS1';
+var acTimer = null, acIdx = -1;
 
-// ── INIT ─────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  renderDots();
-  renderValueList();
+// ── Utilities ──────────────────────────────────────────────────────────────
+function g(id){return document.getElementById(id).value.trim();}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function al(id,msg){var el=document.getElementById(id);if(!el)return;el.textContent=msg;el.classList.add('show');}
+function cl(id){var el=document.getElementById(id);if(el)el.classList.remove('show');}
+function prog(pct){document.getElementById('pFill').style.width=pct+'%';}
+function showScreen(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 
-  // Pre-fill from portal session if available
-  try {
-    const session = JSON.parse(localStorage.getItem('bv_session') || '{}');
-    if (session.email) {
-      document.getElementById('email-field').value = session.email;
-      state.email = session.email;
-    }
-    if (session.schoolName && session.schoolName !== 'Your School') {
-      // Pre-fill welcome heading with first name if available
-    }
-    // Try to extract first name from schoolName (rough heuristic)
-    // Mostly we just show "Welcome!" and let them fill in their name
-  } catch(e) {}
-  chkScreen1();
-});
-
-// ── DOTS ──────────────────────────────────────────────────────
-function renderDots() {
-  const dots = document.getElementById('dots');
-  dots.innerHTML = '';
-  for (let i = 1; i <= TOTAL_SCREENS; i++) {
-    const d = document.createElement('div');
-    d.className = 'dot' + (i === currentScreen ? ' active' : i < currentScreen ? ' done' : '');
-    dots.appendChild(d);
-  }
+// ── S1 readiness ──────────────────────────────────────────────────────────
+function chkS1(){
+  S.firstName=g('fn'); S.lastName=g('ln');
+  var namesOk = S.firstName.length>0 && S.lastName.length>0;
+  if(schoolReady) document.getElementById('nameReveal').classList.add('shown');
+  if(schoolReady && namesOk) document.getElementById('classReveal').classList.add('shown');
+  document.getElementById('s1btn').disabled = !(schoolReady && namesOk && S.classes.length>0);
 }
 
-// ── NAVIGATION ───────────────────────────────────────────────
-function goTo(n) {
-  document.getElementById('screen-' + currentScreen).classList.remove('active');
-  currentScreen = n;
-  const next = document.getElementById('screen-' + n);
-  if (next) {
-    next.classList.add('active');
-    renderDots();
-    if (n === 3) chkScreen3();
-    if (n === 4) chkScreen4();
-  }
-  // Focus first input
-  const inp = next && next.querySelector('input');
-  if (inp) setTimeout(() => inp.focus(), 100);
+// ── S1 → S2 ──────────────────────────────────────────────────────────────
+function goS2(){
+  if(!S.schoolName){al('a1','Please select your school.');return;}
+  if(!S.firstName||!S.lastName){al('a1','Please enter your name.');return;}
+  if(!S.classes.length){al('a1','Please add at least one class.');return;}
+  cl('a1');
+  buildValuePicker();
+  buildKsSummary();
+  showScreen('s2'); prog(50);
 }
 
-// ── SCREEN 1: DETAILS ────────────────────────────────────────
-function chkScreen1() {
-  const fn    = document.getElementById('first-name').value.trim();
-  const ln    = document.getElementById('last-name').value.trim();
-  const email = document.getElementById('email-field').value.trim();
-  const valid = fn && ln && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  document.getElementById('btn-1').disabled = !valid;
-  if (valid) {
-    state.firstName = fn;
-    state.lastName  = ln;
-    state.email     = email;
-  }
+function back(){showScreen('s1');prog(0);}
+
+// ── Submit ────────────────────────────────────────────────────────────────
+function submit(){
+  if(S.valueIdx===null){al('a2','Please choose a British Value to start with.');return;}
+  cl('a2');
+
+  var hasKS1 = S.classes.some(function(c){return c.ks==='KS1';});
+  var hasKS2 = S.classes.some(function(c){return c.ks==='KS2';});
+  var ks1Classes = S.classes.filter(function(c){return c.ks==='KS1';}).map(function(c){return c.name;});
+  var ks2Classes = S.classes.filter(function(c){return c.ks==='KS2';}).map(function(c){return c.name;});
+  var val = VALUES[S.valueIdx];
+
+  // Build loading steps based on what we're creating
+  var steps = [];
+  if(hasKS1) steps.push({id:'lks1',label:'Setting up KS1 account'});
+  if(hasKS2) steps.push({id:'lks2',label:'Setting up KS2 account'});
+  steps.push({id:'lac',label:'Updating your account'});
+  steps.push({id:'llog',label:'Logging to sheet'});
+  renderLoadSteps(steps);
+
+  showScreen('sLoad'); prog(70);
+
+  // Build the payload. GAS handles dual-account setup based on classMeta.
+  var payload = {
+    action:      'onboard',
+    firstName:   S.firstName,
+    lastName:    S.lastName,
+    email:       BV_EMAIL, // from sessionStorage, set by login page after magic link verified
+    schoolName:  S.schoolName,
+    schoolUrn:   S.schoolUrn,
+    classMeta:   S.classes, // [{name, ks}] — GAS splits by KS internally
+    classes:     S.classes.map(function(c){return c.name;}), // back-compat flat list
+    // Value selection — GAS uses the right ID per KS
+    valueIdx:    S.valueIdx,
+    ks1SuggestionId: hasKS1 ? val.ks1id : null,
+    ks2SuggestionId: hasKS2 ? val.ks2id : null,
+    hasKS1:      hasKS1,
+    hasKS2:      hasKS2,
+    ks1Classes:  ks1Classes,
+    ks2Classes:  ks2Classes,
+    // Legacy fields — GAS ignores if classMeta present
+    question:'', options:[], suggestionId: hasKS1 ? val.ks1id : val.ks2id,
+  };
+
+  stepActive('lks1'||'lks2');
+
+  fetch(GAS_URL,{method:'POST',body:JSON.stringify(payload)})
+  .then(function(r){return r.json();})
+  .then(function(d){
+    if(!d.success) throw new Error(d.error||'Setup failed');
+    stepDone('lks1'); stepDone('lks2'); stepDone('lac'); stepDone('llog');
+
+    // Store both meeting links
+    localStorage.setItem('bv_onboarded','1');
+    if(d.meetingLinkKS1) localStorage.setItem('bv_link_ks1',d.meetingLinkKS1);
+    if(d.meetingLinkKS2) localStorage.setItem('bv_link_ks2',d.meetingLinkKS2);
+    // Legacy single link
+    if(d.meetingLink) localStorage.setItem('bv_meeting_link',d.meetingLink);
+
+    // Fire-and-forget sheet update
+    fetch(GAS_URL,{method:'POST',body:JSON.stringify({
+      action:'updatePurchaser',email:d.email||'',
+      schoolName:S.schoolName,wpSchoolId:d.ks1UserId||d.ks2UserId||d.userId||''
+    })}).catch(function(){});
+
+    renderSuccessLinks(d, hasKS1, hasKS2);
+    showScreen('sOk'); prog(100);
+  })
+  .catch(function(err){
+    showScreen('s2'); prog(50);
+    al('a2','Something went wrong: '+err.message+'. Please try again or email hello@smartschoolcouncils.org.uk');
+  });
 }
 
-// ── SCREEN 2: SCHOOL AUTOCOMPLETE ───────────────────────────
-function acInput(val) {
-  state.schoolName = val;
-  state.urn = '';
-  clearTimeout(acTimer);
-  const dd = document.getElementById('ac-dropdown');
-  const nl = document.getElementById('not-listed');
-  document.getElementById('btn-2').disabled = true;
+function goPortal(){window.location.href=PORTAL_URL;}
 
-  if (val.length < 2) {
-    dd.innerHTML = ''; dd.classList.remove('open');
-    nl.classList.remove('visible');
-    return;
-  }
-  dd.innerHTML = '<div class="ac-spinner">Searching...</div>';
-  dd.classList.add('open');
-  acTimer = setTimeout(() => {
-    fetch(SCHOOL_SEARCH + '?q=' + encodeURIComponent(val))
-      .then(r => r.json())
-      .then(results => {
-        acResults = results;
-        nl.classList.add('visible');
-        if (!results.length) {
-          dd.innerHTML = '<div class="ac-spinner">No schools found</div>';
-          return;
-        }
-        dd.innerHTML = results.map((s, i) =>
-          `<div class="ac-item" data-idx="${i}">
-            <span class="ac-name">${s.name}</span>
-            <span class="ac-meta">${s.town ? s.town + ' · ' : ''}${s.postcode}</span>
-          </div>`
-        ).join('');
-        dd.querySelectorAll('.ac-item').forEach((el, i) => {
-          el.addEventListener('mousedown', e => { e.preventDefault(); acSelect(results[i]); });
-        });
-      })
-      .catch(() => {
-        nl.classList.add('visible');
-        dd.innerHTML = '<div class="ac-spinner">Search unavailable</div>';
-      });
-  }, 280);
-}
-
-function acKey(e) {
-  if (e.key === 'Escape') document.getElementById('ac-dropdown').classList.remove('open');
-}
-
-function acSelect(s) {
-  document.getElementById('school-input').value = s.name;
-  document.getElementById('ac-dropdown').classList.remove('open');
-  document.getElementById('not-listed').classList.remove('visible');
-  state.schoolName = s.name;
-  state.urn        = s.urn || '';
-  state.schoolType = guessSchoolType(s.phase, s.type);
-  document.getElementById('btn-2').disabled = false;
-}
-
-function useManualSchool() {
-  const name = document.getElementById('school-input').value.trim();
-  if (name) { state.schoolName = name; state.urn = ''; }
-  document.getElementById('ac-dropdown').classList.remove('open');
-  document.getElementById('not-listed').classList.remove('visible');
-  document.getElementById('btn-2').disabled = !name;
-}
-
-function guessSchoolType(phase, type) {
-  if (!phase && !type) return '';
-  if (/independent/i.test(type||'')) return /primary/i.test(phase||'') ? 'ind_primary' : 'ind_secondary';
-  if (/primary|middle/i.test(phase||'')) return 'primary';
-  if (/secondary/i.test(phase||'')) return 'secondary';
-  if (/special|pru/i.test(type||'')) return 'sen';
-  return 'primary';
-}
-
-document.addEventListener('click', e => {
-  if (!e.target.closest('.ac-wrap')) {
-    const dd = document.getElementById('ac-dropdown');
-    if (dd) dd.classList.remove('open');
-  }
-});
-
-// ── SCREEN 3: CLASSES ────────────────────────────────────────
-function addClass() {
-  const inp = document.getElementById('class-input');
-  const val = inp.value.trim();
-  if (!val) return;
-  if (state.classes.includes(val)) { inp.value = ''; return; }
-  state.classes.push(val);
-  inp.value = '';
-  renderClasses();
-  chkScreen3();
-  inp.focus();
-}
-
-function removeClass(name) {
-  state.classes = state.classes.filter(c => c !== name);
-  renderClasses();
-  chkScreen3();
-}
-
-function renderClasses() {
-  const list = document.getElementById('class-list');
-  list.innerHTML = state.classes.map(c =>
-    `<div class="class-tag">
-      <span>${c}</span>
-      <button onclick="removeClass('${c.replace(/'/g,"\\'")}')">×</button>
-    </div>`
-  ).join('');
-}
-
-function chkScreen3() {
-  document.getElementById('btn-3').disabled = state.classes.length === 0;
-}
-
-// ── SCREEN 4: DEBATE PICKER ──────────────────────────────────
-function renderValueList() {
-  const list = document.getElementById('value-list');
-  list.innerHTML = BV_VALUES.map(v => {
-    const isOpen = openValue === v.id;
-    return `<div class="value-card${isOpen ? ' open' : ''}" id="vc-${v.id}">
-      <div class="value-header" onclick="toggleValue('${v.id}')">
-        <span class="value-emoji">${v.emoji}</span>
-        <span class="value-name">${v.label}</span>
-        <span class="value-chevron">▼</span>
-      </div>
-      <div class="value-questions">
-        ${v.questions.map((q, i) =>
-          `<button class="q-btn${state.question === q.q ? ' selected' : ''}"
-            onclick="selectQuestion('${v.id}', ${i})">${q.q}</button>`
-        ).join('')}
-      </div>
-    </div>`;
+// ── Loading step helpers ──────────────────────────────────────────────────
+function renderLoadSteps(steps){
+  var el=document.getElementById('loadSteps');
+  el.innerHTML=steps.map(function(s){
+    return '<div class="lstep" id="'+s.id+'"><span class="lstep-dot"></span>'+esc(s.label)+'</div>';
   }).join('');
+  if(steps[0]) document.getElementById(steps[0].id).classList.add('active');
 }
+function stepDone(id){var el=document.getElementById(id);if(el){el.classList.remove('active');el.classList.add('done');el.querySelector('.lstep-dot').textContent='';el.innerHTML='✓ '+el.textContent.trim();}}
+function stepActive(id){var el=document.getElementById(id);if(el)el.classList.add('active');}
 
-function toggleValue(id) {
-  openValue = openValue === id ? null : id;
-  renderValueList();
-}
-
-function selectQuestion(valueId, qi) {
-  const v = BV_VALUES.find(x => x.id === valueId);
-  if (!v) return;
-  state.question    = v.questions[qi].q;
-  state.options     = v.questions[qi].options;
-  state.suggestionId = v.questions[qi].suggestionId;
-  renderValueList();
-  chkScreen4();
-}
-
-function chkScreen4() {
-  document.getElementById('btn-4').disabled = !state.question;
-}
-
-// ── SUBMIT ───────────────────────────────────────────────────
-async function submit() {
-  // Validate
-  if (!state.firstName || !state.email || !state.schoolName || !state.classes.length || !state.question) {
-    showError('err-4', 'Something is missing. Please go back and check your details.');
-    return;
+// ── Success links ─────────────────────────────────────────────────────────
+function renderSuccessLinks(d, hasKS1, hasKS2){
+  var html='';
+  if(hasKS1 && d.meetingLinkKS1){
+    html+='<div class="link-block"><span class="lbl">Your first debate link</span>'+
+      '<span class="ks-tag ks1">KS1 · Years 1–2</span>'+
+      '<a href="'+esc(d.meetingLinkKS1)+'" target="_blank">'+esc(d.meetingLinkKS1)+'</a></div>';
   }
-
-  // Show loading
-  document.getElementById('screen-4').classList.remove('active');
-  document.getElementById('loading').classList.add('visible');
-  renderDots();
-
-  const steps = [
-    'Creating your school account...',
-    'Setting up your classes...',
-    'Preparing your first debate...',
-    'Sending your meeting link...',
-    'Almost done...'
-  ];
-  let stepIdx = 0;
-  const stepEl = document.getElementById('loading-step');
-  const stepTimer = setInterval(() => {
-    if (stepIdx < steps.length - 1) stepIdx++;
-    stepEl.textContent = steps[stepIdx];
-  }, 6000);
-
-  try {
-    const payload = {
-      firstName:  state.firstName,
-      lastName:   state.lastName,
-      email:      state.email,
-      schoolName: state.schoolName,
-      schoolType: state.schoolType || 'primary',
-      classes:    state.classes,
-      question:    state.question,
-      options:     state.options,
-      suggestionId: state.suggestionId,
-      subsidised:  false,
-      source:     'bv-pack'
-    };
-
-    const resp = await fetch(GAS_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const data = await resp.json();
-
-    clearInterval(stepTimer);
-    document.getElementById('loading').classList.remove('visible');
-
-    if (data.success) {
-      document.getElementById('done-email').textContent = state.email;
-      currentScreen = 5;
-      document.getElementById('screen-5').classList.add('active');
-      renderDots();
-
-      // Update portal session with school name
-      try {
-        const session = JSON.parse(localStorage.getItem('bv_session') || '{}');
-        session.schoolName = state.schoolName;
-        session.firstName  = state.firstName;
-        localStorage.setItem('bv_session', JSON.stringify(session));
-        localStorage.setItem('bv_onboarded', '1');
-      } catch(e) {}
-    } else {
-      throw new Error(data.error || 'Setup failed');
-    }
-  } catch(err) {
-    clearInterval(stepTimer);
-    document.getElementById('loading').classList.remove('visible');
-    document.getElementById('screen-4').classList.add('active');
-    showError('err-4', 'Something went wrong. Please try again or email hello@smartschoolcouncils.org.uk');
-    console.error(err);
+  if(hasKS2 && d.meetingLinkKS2){
+    html+='<div class="link-block"><span class="lbl">Your first debate link</span>'+
+      '<span class="ks-tag ks2">KS2 · Years 3–6</span>'+
+      '<a href="'+esc(d.meetingLinkKS2)+'" target="_blank">'+esc(d.meetingLinkKS2)+'</a></div>';
   }
+  // Fallback to single link
+  if(!html && d.meetingLink){
+    html='<div class="link-block"><span class="lbl">Your first debate link</span>'+
+      '<a href="'+esc(d.meetingLink)+'" target="_blank">'+esc(d.meetingLink)+'</a></div>';
+  }
+  document.getElementById('linkBlocks').innerHTML=html;
 }
 
-// ── HELPERS ──────────────────────────────────────────────────
-function showError(id, msg) {
-  const el = document.getElementById(id);
-  el.textContent = msg;
-  el.classList.add('visible');
-  setTimeout(() => el.classList.remove('visible'), 6000);
+// ── School autocomplete ───────────────────────────────────────────────────
+document.getElementById('si').addEventListener('input',function(){
+  var q=this.value.trim();
+  schoolReady=false; S.schoolName=''; S.schoolUrn=''; chkS1();
+  clearTimeout(acTimer);
+  var dd=document.getElementById('acDrop'),nl=document.getElementById('nlLink');
+  if(q.length<2){dd.classList.remove('open');dd.innerHTML='';nl.classList.remove('show');return;}
+  dd.innerHTML='<div class="ac-msg">Searching…</div>';dd.classList.add('open');
+  acTimer=setTimeout(function(){
+    fetch(SEARCH_URL+'?q='+encodeURIComponent(q))
+    .then(function(r){return r.json();})
+    .then(function(res){
+      acIdx=-1;nl.classList.add('show');
+      if(!res||!res.length){dd.innerHTML='<div class="ac-msg">No schools found — try a different spelling</div>';return;}
+      dd.innerHTML=res.slice(0,8).map(function(s){
+        return '<div class="ac-item"><div class="ac-name">'+esc(s.name)+'</div>'+
+          '<div class="ac-meta">'+esc((s.town?s.town+' · ':'')+( s.postcode||''))+'</div></div>';
+      }).join('');
+      dd.querySelectorAll('.ac-item').forEach(function(el,i){
+        el.addEventListener('mousedown',function(e){e.preventDefault();pickSchool(res[i]);});
+      });
+    })
+    .catch(function(){nl.classList.add('show');dd.innerHTML='<div class="ac-msg">Search unavailable</div>';});
+  },280);
+});
+
+document.getElementById('si').addEventListener('keydown',function(e){
+  var items=document.querySelectorAll('#acDrop .ac-item');
+  if(e.key==='ArrowDown'){e.preventDefault();acIdx=Math.min(acIdx+1,items.length-1);hiAc(items);}
+  else if(e.key==='ArrowUp'){e.preventDefault();acIdx=Math.max(acIdx-1,0);hiAc(items);}
+  else if(e.key==='Enter'&&acIdx>=0){e.preventDefault();items[acIdx].dispatchEvent(new MouseEvent('mousedown'));}
+  else if(e.key==='Escape'){document.getElementById('acDrop').classList.remove('open');}
+});
+
+document.addEventListener('click',function(e){
+  if(!e.target.closest('.ac-wrap')){document.getElementById('acDrop').classList.remove('open');}
+});
+
+function hiAc(items){items.forEach(function(el,i){el.classList.toggle('hi',i===acIdx);});if(acIdx>=0)items[acIdx].scrollIntoView({block:'nearest'});}
+
+function pickSchool(s){
+  S.schoolName=s.name;S.schoolUrn=s.urn||'';
+  document.getElementById('si').value=s.name;
+  document.getElementById('acDrop').classList.remove('open');
+  document.getElementById('nlLink').classList.remove('show');
+  document.getElementById('mtWrap').style.display='none';
+  schoolReady=true;chkS1();
+  setTimeout(function(){document.getElementById('fn').focus();},120);
 }
+
+function useManual(){
+  var name=document.getElementById('si').value.trim();
+  if(name){S.schoolName=name;schoolReady=true;}
+  document.getElementById('mtWrap').style.display='block';
+  document.getElementById('nlLink').classList.remove('show');
+  document.getElementById('acDrop').classList.remove('open');
+  chkS1();
+  setTimeout(function(){document.getElementById('fn').focus();},120);
+}
+
+// ── KS toggle ─────────────────────────────────────────────────────────────
+function setKs(ks){
+  currentKs=ks;
+  document.getElementById('ksBtn1').classList.toggle('active',ks==='KS1');
+  document.getElementById('ksBtn2').classList.toggle('active',ks==='KS2');
+}
+
+// ── Classes ───────────────────────────────────────────────────────────────
+function renderTags(){
+  document.getElementById('tagList').innerHTML=S.classes.map(function(c,i){
+    return '<span class="tag '+c.ks.toLowerCase()+'">'+esc(c.name)+
+      ' <span class="ks-badge">'+esc(c.ks)+'</span>'+
+      '<button type="button" onclick="rmClass('+i+')" title="Remove">×</button></span>';
+  }).join('');
+  chkS1();
+}
+
+function addClass(){
+  var inp=document.getElementById('ci'),val=inp.value.trim();
+  if(!val)return;
+  if(S.classes.find(function(c){return c.name===val;})){inp.value='';return;}
+  S.classes.push({name:val,ks:currentKs});
+  inp.value='';renderTags();cl('a1');inp.focus();
+}
+
+function rmClass(i){S.classes.splice(i,1);renderTags();}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&document.activeElement===document.getElementById('ci')){e.preventDefault();addClass();}
+});
+
+// ── Value picker ──────────────────────────────────────────────────────────
+function buildValuePicker(){
+  document.getElementById('valuePicker').innerHTML=VALUES.map(function(v,i){
+    return '<div class="value-card" id="vc'+i+'" onclick="pickValue('+i+')">' +
+      '<span class="value-card-num">0'+(i+1)+'</span>'+
+      '<span class="value-card-name">'+esc(v.name)+'</span>'+
+      '<span class="value-card-check">✓</span>'+
+    '</div>';
+  }).join('');
+  S.valueIdx=null;
+  document.getElementById('s2btn').disabled=true;
+}
+
+function pickValue(i){
+  S.valueIdx=i;
+  document.querySelectorAll('.value-card').forEach(function(el){el.classList.remove('selected');});
+  document.getElementById('vc'+i).classList.add('selected');
+  document.getElementById('s2btn').disabled=false;
+  cl('a2');
+}
+
+function buildKsSummary(){
+  var hasKS1=S.classes.some(function(c){return c.ks==='KS1';});
+  var hasKS2=S.classes.some(function(c){return c.ks==='KS2';});
+  var ks1n=S.classes.filter(function(c){return c.ks==='KS1';}).length;
+  var ks2n=S.classes.filter(function(c){return c.ks==='KS2';}).length;
+  var html='';
+  if(hasKS1) html+='<span class="ks-pill ks1">KS1 · '+ks1n+' class'+(ks1n!==1?'es':'')+'</span>';
+  if(hasKS2) html+='<span class="ks-pill ks2">KS2 · '+ks2n+' class'+(ks2n!==1?'es':'')+'</span>';
+  var sub = document.querySelector('#s2 .sub');
+  if(hasKS1&&hasKS2){
+    sub.textContent="You've added both KS1 and KS2 classes — we'll set up both in one go. Pick the value you'd like to start with.";
+  } else if(hasKS1){
+    sub.textContent="You've added KS1 classes. You can add KS2 classes from your dashboard later. Pick the value you'd like to start with.";
+  } else {
+    sub.textContent="You've added KS2 classes. You can add KS1 classes from your dashboard later. Pick the value you'd like to start with.";
+  }
+  document.getElementById('ksSummary').innerHTML=html;
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+if(localStorage.getItem('bv_onboarded')){window.location.href=PORTAL_URL;}
+// No email in session = arrived without going through magic link → back to login
+if(!BV_EMAIL){window.location.href='index.html';}
 </script>
-
 </body>
 </html>
